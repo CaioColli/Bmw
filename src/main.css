@@ -1,0 +1,15 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a, p, li, span {
+    font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+    --black: #000000;
+    --gray: #888C8D;
+}
