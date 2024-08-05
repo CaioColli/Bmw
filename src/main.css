@@ -12,4 +12,5 @@ a, p, li, span {
 :root {
     --black: #000000;
     --gray: #888C8D;
+    --white: #ffffff;
 }

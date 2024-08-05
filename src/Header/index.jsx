@@ -85,7 +85,7 @@ export const Header = () => {
     const [resizeTriggered, setResizeTriggered] = useState(false)
 
     const inputRef = useRef()
-    const timeLine = gsap.timeline({ defaults: { duration: 1 }})
+    const timeLine = gsap.timeline({ defaults: { duration: 0.7 }})
 
     const handleClick = () => {
         timeLine.to('[data-id="searchIcon"]', {
