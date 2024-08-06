@@ -1,3 +1,4 @@
+import { Carroussel } from '../Carroussel'
 import { Header } from '../Header/'
 import { Showcase } from '../Showcase/index'
 
@@ -6,6 +7,7 @@ export const HomePage = () => {
     <>
       <Header />
       <Showcase />
+      <Carroussel />
     </>
   );
 };

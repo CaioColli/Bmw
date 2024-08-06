@@ -14,6 +14,7 @@ const PhotoCar = styled.img`
 
     @media (max-width: 1440px) {
         left: 20%;
+        max-width: 362px;
     }
 
     @media (max-width: 768px) {
@@ -30,6 +31,7 @@ const Card = styled.div`
     background-size: cover;
     border-radius: 25px;
     height: ${props => props.height || '400px' };
+    overflow: hidden;
     position: relative;
     width: ${props => props.width || '400px' };
 

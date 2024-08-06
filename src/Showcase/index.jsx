@@ -53,18 +53,15 @@ export const Showcase = () => {
     }, [])
 
     const i7Data = () => {
-        const BmwI7 = data.find(car => car.ID_Carro === '3')
-        return BmwI7
+        return data.find(car => car.ID_Carro === '3')
     }
 
     const m3Data = () => {
-        const BmwM3 = data.find(car => car.ID_Carro == '25')
-        return BmwM3
+        return data.find(car => car.ID_Carro == '25')
     }
 
-    const x3Data = () => {
-        const BmwX6 = data.find(car => car.ID_Carro === '10')
-        return BmwX6
+    const x6Data = () => {
+        return data.find(car => car.ID_Carro === '10')
     }
 
     return (
@@ -74,7 +71,7 @@ export const Showcase = () => {
                     <Message />
                     <Cards>
                         {m3Data && <CarCard key={m3Data.ID_Carro} data={m3Data()} />}
-                        {x3Data && <CarCard key={x3Data.ID_Carro} data={x3Data()} />}
+                        {x6Data && <CarCard key={x6Data.ID_Carro} data={x6Data()} />}
                     </Cards>
                 </MessageAndCards>
                 {i7Data && <CarCard
