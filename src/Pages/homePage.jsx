@@ -9,5 +9,5 @@ export const HomePage = () => {
       <Showcase />
       <Carroussel />
     </>
-  );
-};
+  )
+}

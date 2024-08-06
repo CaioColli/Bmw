@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { dataApi } from '../Utils/request'
 import styled from 'styled-components'
 import { ItemsCarroussel } from './ItemsCarroussel'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { CustomLeftArrow, CustomRightArrow } from './Buttons'
+import { pageAnimation } from '../Animations'
 
 const Container = styled.section`
     margin: 48px 0;
@@ -12,6 +13,13 @@ const Container = styled.section`
 
 export const Carroussel = () => {
     const [data, setData] = useState([])
+    const container = useRef(null)
+
+    useEffect(() => {
+        if (container.current) {
+            pageAnimation(container.current, 150)
+        }
+    }, [data])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,7 +62,7 @@ export const Carroussel = () => {
     };
 
     return (
-        <Container>
+        <Container ref={container} >
             <Carousel
                 autoPlay
                 autoPlaySpeed={5000}

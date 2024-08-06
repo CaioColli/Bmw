@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { dataApi } from '../Utils/request'
 import { CarCard } from './Cards/Card'
 import { Message } from './ShowCaseMessage'
 import styled from 'styled-components'
+import { pageAnimation } from '../Animations'
 
 const Container = styled.div`
     display: flex;
@@ -38,6 +39,13 @@ const Cards = styled.div`
 
 export const Showcase = () => {
     const [data, setData] = useState([])
+    const container = useRef(null)
+
+    useEffect(() => {
+        if (container.current) {
+            pageAnimation(container.current, 50 )
+        }
+    }, [data])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,7 +74,7 @@ export const Showcase = () => {
 
     return (
         <>
-            <Container>
+            <Container ref={container} >
                 <MessageAndCards>
                     <Message />
                     <Cards>
@@ -85,5 +93,4 @@ export const Showcase = () => {
             </Container>
         </>
     )
-
 }
