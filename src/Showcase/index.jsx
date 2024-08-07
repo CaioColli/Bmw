@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { dataApi } from '../Utils/request'
 import { CarCard } from './Cards/Card'
 import { Message } from './ShowCaseMessage'
 import styled from 'styled-components'
 import { pageAnimation } from '../Animations'
+import { useFetch } from '../Hooks/useFetchCars'
 
 const Container = styled.div`
     display: flex;
@@ -13,6 +13,10 @@ const Container = styled.div`
 
     @media (max-width: 1440px) {
         justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        margin-top: 24px;
     }
 `
 const MessageAndCards = styled.div`
@@ -24,6 +28,10 @@ const MessageAndCards = styled.div`
         align-items: center;
         margin-bottom: 20px;
         gap: 89px;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 24px;
     }
 `
 
@@ -38,27 +46,15 @@ const Cards = styled.div`
 `
 
 export const Showcase = () => {
-    const [data, setData] = useState([])
     const container = useRef(null)
+
+    const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
 
     useEffect(() => {
         if (container.current) {
             pageAnimation(container.current, 50 )
         }
     }, [data])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await dataApi()
-                setData(data)
-            } catch (error) {
-                console.error('Erro ao buscar os dados', error)
-            }
-        }
-
-        fetchData()
-    }, [])
 
     const i7Data = () => {
         return data.find(car => car.ID_Carro === '3')
@@ -85,10 +81,10 @@ export const Showcase = () => {
                 {i7Data && <CarCard
                     key={i7Data.ID_Carro}
                     data={i7Data()}
-                    width='500px'
-                    height='720px'
-                    car='610px'
-                    display='block'
+                    cardWidth='500px'
+                    cardHeight='720px'
+                    widthCar='610px'
+                    logoDisplay='block'
                 />}
             </Container>
         </>

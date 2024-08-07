@@ -5,10 +5,12 @@ import { DescriptionCar, ModelCar, PriceCar } from '../Texts'
 import { currencyFormat } from '../../../Utils/currencyFormat'
 import logoBmwBackground from '../../../../public/BMW Logo Background.svg'
 
-const PhotoCar = styled.img`
+const PhotoCar = styled.img.withConfig({
+    shouldForwardProp: (prop) => !['widthCar'].includes(prop),
+})`
     left: 5%;
     max-width: 362px;
-    max-width: ${props => props.car || '362px'};
+    max-width: ${props => props.widthCar || '362px'};
     position: absolute;
     top: 40%;
 
@@ -23,17 +25,19 @@ const PhotoCar = styled.img`
     }
 `
 
-const Card = styled.div`
+const Card = styled.div.withConfig({
+    shouldForwardProp: (prop) => !['cardHeight', 'cardWidth'].includes(prop),
+})`
     background-color: var(--black);
     background-image: url(${background});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 25px;
-    height: ${props => props.height || '400px' };
+    height: ${props => props.cardHeight || '400px' };
     overflow: hidden;
     position: relative;
-    width: ${props => props.width || '400px' };
+    width: ${props => props.cardWidth || '400px' };
 
     &:hover ${DescriptionCar} {
         opacity: 1;
@@ -50,12 +54,14 @@ const Card = styled.div`
     }
 `
 
-const LogoBackground  = styled.div`
+const LogoBackground  = styled.div.withConfig({
+    shouldForwardProp: (prop) => !['logoDisplay'].includes(prop),
+})`
     background-image: url(${logoBmwBackground});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: ${props => props.display || 'none'};
+    display: ${props => props.logoDisplay || 'none'};
     height: 200px;
     position: absolute;
     top: 25%;
@@ -66,16 +72,16 @@ const LogoBackground  = styled.div`
     }
 `
 
-export const CarCard = ({ data, width, height, car, display }) => {
+export const CarCard = ({ data, cardWidth, cardHeight, widthCar, logoDisplay }) => {
     return (
         <>
-            <Card width={width} height={height}>
+            <Card cardWidth={cardWidth} cardHeight={cardHeight}>
                 <LinkLogo />
-                <LogoBackground display={display} />
+                <LogoBackground logoDisplay={logoDisplay} />
 
                 {data && (
                     <>
-                        <PhotoCar src={data.FotoFrontal} alt='Foto' car={car} />
+                        <PhotoCar src={data.FotoFrontal} alt='Foto' widthCar={widthCar} />
 
                         <DescriptionCar>
                             <ModelCar> {data.Modelo} </ModelCar>

@@ -30,6 +30,10 @@ const Arrow = styled.img`
 const Paragraph = styled.p`
     font-size: 18px;
     line-height: 24px;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `
 
 export const Message = () => {

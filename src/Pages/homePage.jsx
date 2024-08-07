@@ -1,5 +1,6 @@
 import { Carroussel } from '../Carroussel'
 import { Header } from '../Header/'
+import { Cars } from '../ModelCarsHome'
 import { Showcase } from '../Showcase/index'
 
 export const HomePage = () => {
@@ -8,6 +9,7 @@ export const HomePage = () => {
       <Header />
       <Showcase />
       <Carroussel />
+      <Cars />
     </>
   )
 }

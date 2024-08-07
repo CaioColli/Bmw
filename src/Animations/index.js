@@ -23,5 +23,5 @@ export function pageAnimation(element, initialPosition) {
             onEnter: () => animation.play(),
             onLeaveBack: () => animation.pause().reverse() // Volta ao estado inicial quando rola para cima.
         })
-    }, 100)
+    }, 500)
 }

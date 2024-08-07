@@ -13,4 +13,6 @@ a, p, li, span {
     --black: #000000;
     --gray: #888C8D;
     --white: #ffffff;
+    --grayBorder: #C0C0C0;
+    --fontLato: 'Lato'
 }
