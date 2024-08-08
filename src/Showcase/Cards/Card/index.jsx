@@ -3,7 +3,7 @@ import background from '../../../../public/Background.png'
 import { LinkLogo } from '../IconLink'
 import { DescriptionCar, ModelCar, PriceCar } from '../Texts'
 import { currencyFormat } from '../../../Utils/currencyFormat'
-import logoBmwBackground from '../../../../public/BMW Logo Background.svg'
+import logoBmwBackground from '../../../../public/BMWLogoBackground.png'
 
 const PhotoCar = styled.img.withConfig({
     shouldForwardProp: (prop) => !['widthCar'].includes(prop),
@@ -63,6 +63,7 @@ const LogoBackground  = styled.div.withConfig({
     background-size: cover;
     display: ${props => props.logoDisplay || 'none'};
     height: 200px;
+    left: -20%;
     position: absolute;
     top: 25%;
     width: 605px;
