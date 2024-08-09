@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { ItemsCarroussel } from './ItemsCarroussel'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { CustomLeftArrow, CustomRightArrow } from './Buttons'
-import { pageAnimation } from '../Animations'
-import { useFetch } from '../Hooks/useFetchCars'
+import { pageAnimation } from '../../../Animations'
+import { useFetch } from '../../../Hooks/useFetchCars'
 
 const Container = styled.section`
     margin: 48px 0;

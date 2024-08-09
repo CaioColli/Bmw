@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { forwardRef, useEffect, useState } from 'react'
+import { forwardRef } from 'react'
 
 const Container = styled.div`
     position: relative;
@@ -19,7 +19,7 @@ const InputStyled = styled.input`
         border-color: var(--black);
     }
 `
-
+// Usei o forwardRef para ser possivel usar o hook useRef, e para isso é preciso passar dois parametros, sendo eles "props" e "ref"
 export const Input = forwardRef(( props, ref ) => {
     return (
         <Container>

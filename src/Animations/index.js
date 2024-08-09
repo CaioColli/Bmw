@@ -21,7 +21,8 @@ export function pageAnimation(element, initialPosition) {
             end: 'bottom top',
             markers: false,
             onEnter: () => animation.play(),
-            onLeaveBack: () => animation.pause().reverse() // Volta ao estado inicial quando rola para cima.
+            //onLeaveBack: () => animation.pause().reverse() // Volta ao estado inicial quando rola para cima.
+            onLeaveBack: () => animation.reverse()
         })
-    }, 500)
+    }, 400)
 }

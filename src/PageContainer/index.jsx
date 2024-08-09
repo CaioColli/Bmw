@@ -5,11 +5,14 @@ const Container = styled.div`
     max-width: 100%;
     overflow: hidden;
     position: relative;
-    width: 1440px;
-    padding: 0 48px;
+    width: 1920px;
 
-    @media (min-width: 1440px) {
-        padding: 0;
+    @media (max-width: 1440px) {
+        padding: 0 48px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0 24px;
     }
 `
 

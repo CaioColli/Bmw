@@ -1,5 +1,5 @@
-import nextIcon from '../../../public/Icone Proximo.png'
-import prevIcon from '../../../public/Icone Anterior.png'
+import nextIcon from '/public/Icone Proximo.png'
+import prevIcon from '/public/Icone Anterior.png'
 import styled from 'styled-components'
 
 export const LeftArrow = styled.button`

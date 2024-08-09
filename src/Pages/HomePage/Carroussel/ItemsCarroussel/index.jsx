@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import background from '../../../public/Background.png'
+import background from '/public/Background.png'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
 const Carroussel = styled.div`
@@ -7,7 +7,7 @@ const Carroussel = styled.div`
     background-image: url(${background});
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position: relative;
 

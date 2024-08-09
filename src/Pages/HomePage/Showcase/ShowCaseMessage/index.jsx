@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import arrow from '../../../public/Seta.svg'
+import arrow from '../../../../../public/Seta.svg'
 
 const Container = styled.div`
     display: flex;

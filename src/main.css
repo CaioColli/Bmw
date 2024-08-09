@@ -14,5 +14,6 @@ a, p, li, span {
     --gray: #888C8D;
     --white: #ffffff;
     --grayBorder: #C0C0C0;
+    --grayBg: #262626;
     --fontLato: 'Lato'
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import logo from '../../public/Icone BMW.svg'
+import logo from '/public/Icone BMW.svg'
 import { IoSearchOutline } from 'react-icons/io5'
 import { FiAlignLeft } from 'react-icons/fi'
 import { Input } from '../Input'
@@ -7,6 +7,14 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const Container = styled.header`
+    padding: 0 48px;
+
+    @media (max-width: 1440px) {
+        padding: 0;
+    }
+`
+
+const Content = styled.div`
     align-items: center;
     border-bottom: 1px solid var(--black);
     display: flex;
@@ -37,7 +45,7 @@ const IconAndNavContainer = styled.div`
     height: 100%;
 `
 
-const PageIcon = styled.span`
+const PageIcon = styled.img`
     cursor: pointer;
 `
 
@@ -145,21 +153,23 @@ export const Header = () => {
     }, [])
 
     return (
-        <Container $isCentered={isCentered}>
-            {iconMenuBurguerVisibility && <BurguerIcon />}
+        <Container>
+            <Content $isCentered={isCentered}>
+                {iconMenuBurguerVisibility && <BurguerIcon />}
 
-            <IconAndNavContainer>
-                {iconLogoPageVisibility && <PageIcon> <img src={logo} alt="Logo Bmw"></img> </PageIcon>}
+                <IconAndNavContainer>
+                    {iconLogoPageVisibility && <PageIcon src={logo} alt="Logo Bmw" />}
 
-                <NavList>
-                    <NavItem><NavLink>Modelos</NavLink></NavItem>
-                    <NavItem><NavLink>Lançamento</NavLink></NavItem>
-                    <NavItem><NavLink>Descubra a BMW</NavLink></NavItem>
-                </NavList>
-            </IconAndNavContainer>
+                    <NavList>
+                        <NavItem><NavLink>Modelos</NavLink></NavItem>
+                        <NavItem><NavLink>Lançamento</NavLink></NavItem>
+                        <NavItem><NavLink>Descubra a BMW</NavLink></NavItem>
+                    </NavList>
+                </IconAndNavContainer>
 
-            {iconSearchVisibility && <SearchIcon onClick={handleClick} data-id='searchIcon' />}
-            {inputVisibility && <Input ref={inputRef} />}
+                {iconSearchVisibility && <SearchIcon onClick={handleClick} data-id='searchIcon' />}
+                {inputVisibility && <Input ref={inputRef} />}
+            </Content>
         </Container>
     )
 }

@@ -1,15 +1,21 @@
 import styled from 'styled-components'
-import { useFetch } from '../Hooks/useFetchCars'
-import { SubTitle } from '../SubTitle'
-import { CardCar } from '../CardCars'
+import { useFetch } from '@/Hooks/useFetchCars'
+import { SubTitle } from '@/SubTitle'
+import { CardCar } from '@/CardCars'
 import { useEffect, useRef } from 'react'
-import { pageAnimation } from '../Animations'
+import { pageAnimation } from '@/Animations'
+import { Link } from 'react-router-dom'
 
 const Container = styled.section`
     display: flex;
     flex-direction: column;
     gap: 140px;
     margin-bottom: 48px;
+    padding: 0 48px;
+
+    @media (max-width: 1440px) {
+        padding: 0;
+    }
 
     @media (max-width: 768px) {
         align-items: center;
@@ -40,7 +46,13 @@ const ContentCards = styled.div`
     }
 `
 
-const Text = styled.h5`
+const StyledLink = styled(Link)`
+    all: unset;
+`
+
+const Button = styled.button`
+    all: unset;
+    text-decoration: none;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
@@ -51,7 +63,7 @@ export const Cars = () => {
     const container = useRef(null)
 
     useEffect(() => {
-        if(container.current) {
+        if (container.current) {
             pageAnimation(container.current, 150)
         }
     }, [data])
@@ -72,6 +84,7 @@ export const Cars = () => {
                                 carImage={car.FotoFrontal}
                                 title={car.Modelo}
                                 engineType={car.FiltroCombustível}
+                                linkTo='modelos'
                                 //onClick={() => click(car)}
                                 //
                                 cardWidth='530px'
@@ -80,16 +93,17 @@ export const Cars = () => {
                                 engineFontSize='16px'
                                 valueCarDisplay='none'
                                 buttonDisplay='flex'
-                                buttonWidth='145px'
-                                buttonHeight='43px'
+                                buttonPadding={'16px 32px'}
                             />
                         ))}
                     </ContentCards>
                 )}
 
-                <Text>
-                    TODOS MODELOS
-                </Text>
+                <StyledLink to='modelos'>
+                    <Button>
+                        TODOS MODELOS
+                    </Button>
+                </StyledLink>
             </Content>
         </Container>
     )

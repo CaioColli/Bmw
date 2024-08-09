@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import background from '../../../../public/Background.png'
+import background from '/public/Background.png'
 import { LinkLogo } from '../IconLink'
 import { DescriptionCar, ModelCar, PriceCar } from '../Texts'
-import { currencyFormat } from '../../../Utils/currencyFormat'
-import logoBmwBackground from '../../../../public/BMWLogoBackground.png'
+import { currencyFormat } from '@/Utils/currencyFormat'
+import logoBmwBackground from '/public/BMWLogoBackground.png'
 
 const PhotoCar = styled.img.withConfig({
     shouldForwardProp: (prop) => !['widthCar'].includes(prop),

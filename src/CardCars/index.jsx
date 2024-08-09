@@ -1,3 +1,5 @@
+import { Button } from '@/Button'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Card = styled.div.withConfig({
@@ -76,35 +78,17 @@ const EngineIcon = styled.img`
 
 `
 
-const Button = styled.button.withConfig({
-    shouldForwardProp: (prop) => !['buttonDisplay', 'buttonHeight', 'buttonWidth'].includes(prop),
-})`
-    all: unset;
-    align-items: center;
-    background-color: var(--black);
-    border-radius: 15px;
-    color: var(--white);
-    cursor: pointer;
-    display: ${props => props.buttonDisplay || 'none'};
-    height: ${props => props.buttonHeight || '33px'};
-    justify-content: center;
-    transition: 0.2s ease-in-out;
-    width: ${props => props.buttonWidth || '110px'};
-
-    &:hover {
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    }
-`
-
 const ValueCar = styled.span.withConfig({
     shouldForwardProp: (prop) => !['valueCarDisplay'].includes(prop),
 })`
     display: ${props => props.valueCarDisplay || 'block'};
     font-size: 16px;
 `
+const StyledLink = styled(Link)`
+    all: unset;
+`
 
-
-export const CardCar = ({ carImage, title, engineType, icon, onClick, valueCar, cardWidth, carWidth, titleSize, engineFontSize, valueCarDisplay, buttonDisplay, buttonWidth, buttonHeight }) => {
+export const CardCar = ({ cardWidth, carWidth, carImage, titleSize, title, engineFontSize, engineType, icon, valueCarDisplay, valueCar, linkTo, onClick, buttonDisplay, buttonPadding }) => {
     return (
         <Card cardWidth={cardWidth}>
             <CarImage carWidth={carWidth} src={carImage} />
@@ -120,9 +104,14 @@ export const CardCar = ({ carImage, title, engineType, icon, onClick, valueCar, 
 
                 <ValueCar valueCarDisplay={valueCarDisplay} > {`A partir de ${valueCar}`} </ValueCar>
 
-                <Button onClick={onClick} buttonDisplay={buttonDisplay} buttonWidth={buttonWidth} buttonHeight={buttonHeight}>
-                    Detalhes
-                </Button>
+                <StyledLink to={linkTo}>
+                    <Button onClick={onClick}
+                        buttonDisplay={buttonDisplay}
+                        buttonPadding={buttonPadding}
+                    >
+                        DETALHES
+                    </Button>
+                </StyledLink>
 
             </Container>
         </Card>

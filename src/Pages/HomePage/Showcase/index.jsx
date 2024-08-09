@@ -1,14 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { CarCard } from './Cards/Card'
 import { Message } from './ShowCaseMessage'
 import styled from 'styled-components'
-import { pageAnimation } from '../Animations'
-import { useFetch } from '../Hooks/useFetchCars'
+import { pageAnimation } from '@/Animations'
+import { useFetch } from '@/Hooks/useFetchCars'
 
-const Container = styled.div`
+const Container = styled.section`
+    margin: 48px auto;
+    max-width: 1440px;
+`
+
+const Content = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 48px;
     justify-content: space-between;
 
     @media (max-width: 1440px) {
@@ -69,8 +73,8 @@ export const Showcase = () => {
     }
 
     return (
-        <>
-            <Container ref={container} >
+        <Container>
+            <Content ref={container} >
                 <MessageAndCards>
                     <Message />
                     <Cards>
@@ -86,7 +90,7 @@ export const Showcase = () => {
                     widthCar='610px'
                     logoDisplay='block'
                 />}
-            </Container>
-        </>
+            </Content>
+        </Container>
     )
 }
