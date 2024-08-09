@@ -30,7 +30,7 @@ export const M5Presentation = () => {
 
     useEffect(() => {
         if (container.current) {
-            //pageAnimation(container.current, '50')
+            pageAnimation(container.current, '150')
         }
     }, [])
 

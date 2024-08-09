@@ -3,8 +3,6 @@ import { RiCopyrightLine } from 'react-icons/ri'
 import logo from '/public/Icone BMW.svg'
 import { IoLogoGithub } from 'react-icons/io5'
 import { FaLinkedin } from 'react-icons/fa'
-import { useEffect, useRef } from 'react'
-import { pageAnimation } from '@/Animations'
 
 const Container = styled.footer`
     align-items: center;
@@ -68,16 +66,8 @@ const AnchorIcon = styled.span`
 `
 
 export const Footer = () => {
-    const container = useRef(null)
-
-    useEffect(() => {
-        if(container.current) {
-            //pageAnimation(container.current, '50')
-        }
-    }, [])
-
     return (
-        <Container ref={container}>
+        <Container>
             <ContainIcon>
                 <PageIcon src={logo} alt="Logo Bmw" />
             </ContainIcon>

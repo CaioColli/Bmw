@@ -13,10 +13,6 @@ const Container = styled.section`
     margin-bottom: 48px;
     padding: 0 48px;
 
-    @media (max-width: 1440px) {
-        padding: 0;
-    }
-
     @media (max-width: 768px) {
         align-items: center;
         gap: 70px;
