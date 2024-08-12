@@ -5,6 +5,7 @@ import { FiAlignLeft } from 'react-icons/fi'
 import { Input } from '../Input'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { Link } from 'react-router-dom'
 
 const Container = styled.header`
     padding: 0 48px;
@@ -59,8 +60,13 @@ const NavList = styled.ul`
     }
 `
 
+const StyledLink = styled(Link)`
+    all: unset;
+`
+
 const NavItem = styled.li`
     all: unset;
+    cursor: pointer;
     color: var(--gray);
     transition: color 0.5s;
 
@@ -93,7 +99,7 @@ export const Header = () => {
     const [resizeTriggered, setResizeTriggered] = useState(false)
 
     const inputRef = useRef()
-    const timeLine = gsap.timeline({ defaults: { duration: 0.7 }})
+    const timeLine = gsap.timeline({ defaults: { duration: 0.7 } })
 
     const handleClick = () => {
         timeLine.to('[data-id="searchIcon"]', {
@@ -114,7 +120,7 @@ export const Header = () => {
     }
 
     const handleClickOutsideInput = (event) => {
-        if(inputRef.current && !inputRef.current.contains(event.target)) {
+        if (inputRef.current && !inputRef.current.contains(event.target)) {
             timeLine.to(inputRef.current, {
                 opacity: 0,
                 y: -10,
@@ -134,15 +140,15 @@ export const Header = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if(window.innerWidth < 768) {
+            if (window.innerWidth < 768) {
                 setResizeTriggered(true)
             } else {
                 setResizeTriggered(false)
             }
-        } 
+        }
 
         handleResize()
-        
+
         document.addEventListener('mousedown', handleClickOutsideInput)
         window.addEventListener('resize', handleResize)
 
@@ -161,7 +167,11 @@ export const Header = () => {
                     {iconLogoPageVisibility && <PageIcon src={logo} alt="Logo Bmw" />}
 
                     <NavList>
-                        <NavItem><NavLink>Modelos</NavLink></NavItem>
+                        <StyledLink to='modelos'>
+                            <NavItem>
+                                Modelos
+                            </NavItem>
+                        </StyledLink>
                         <NavItem><NavLink>Lançamento</NavLink></NavItem>
                         <NavItem><NavLink>Descubra a BMW</NavLink></NavItem>
                     </NavList>
