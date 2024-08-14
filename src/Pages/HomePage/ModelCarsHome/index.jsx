@@ -84,6 +84,7 @@ export const Cars = () => {
                                 //onClick={() => click(car)}
                                 //
                                 cardWidth='530px'
+                                cardHeight='250px'
                                 carWidth='450px'
                                 titleSize='30px'
                                 engineFontSize='16px'

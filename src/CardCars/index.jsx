@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Card = styled.div.withConfig({
     // Utilizar shouldForwardProp para evitar que a prop cardWidth seja passada para o DOM
-    shouldForwardProp: (prop) => !['cardWidth'].includes(prop),
+    shouldForwardProp: (prop) => !['cardWidth', 'cardHeight', 'cardCursor'].includes(prop),
 })`
     align-items: end;
     border-radius: 20px;
@@ -12,9 +12,12 @@ const Card = styled.div.withConfig({
     display: flex;
     height: auto;
     min-height: 240px;
+    min-height: ${props => props.cardHeight || '150px'};
     overflow: visible;
     position: relative;
     width: ${props => props.cardWidth || '250px'};
+    cursor: ${props => props.cardCursor || 'default'}; 
+    cursor: pointer;
 
     @media (max-width: 768px) {
         max-width: 250px;
@@ -83,14 +86,15 @@ const ValueCar = styled.span.withConfig({
 })`
     display: ${props => props.valueCarDisplay || 'block'};
     font-size: 16px;
+    font-weight: bold;
 `
 const StyledLink = styled(Link)`
     all: unset;
 `
 
-export const CardCar = ({ cardWidth, carWidth, carImage, titleSize, title, engineFontSize, engineType, icon, valueCarDisplay, valueCar, linkTo, onClick, buttonDisplay, buttonPadding }) => {
+export const CardCar = ({ cardWidth, carWidth, cardHeight, cardCursor, carImage, titleSize, title, engineFontSize, engineType, icon, valueCarDisplay, valueCar, linkTo, onClick, buttonDisplay, buttonPadding }) => {
     return (
-        <Card cardWidth={cardWidth}>
+        <Card cardWidth={cardWidth} cardHeight={cardHeight} cardCursor={cardCursor} >
             <CarImage carWidth={carWidth} src={carImage} />
             <Container>
 
