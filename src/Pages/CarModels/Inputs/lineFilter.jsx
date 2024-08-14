@@ -12,42 +12,30 @@ const Item = styled.li`
     all: unset;
 `
 
-const Label = styled.label`
+const Button = styled.button`
+    all: unset;
     cursor: pointer;
     color: var(--gray);
     font-size: 18px;
     font-weight: bold;
     transition: 0.2s ease-in;
-`
-
-const Input = styled.input`
-    all: unset;
-    cursor: pointer;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-
-    &:checked + ${Label} {
+    
+    &:hover {
         color: var(--black);
-        font-size: 20px;
-    }
-
-    &:hover + ${Label} {
-        color: var(--black);
+        scale: 1.05;
     }
 `
 
-export const LineFilter = () => {
-    const filters = ['BMW i', 'X', 'M', '5', '4', '3', '2', '1', 'Plug-in Híbrido']
+export const LineFilter = ({ onFilterLineClick }) => {
+    const filters = ['BMW i', 'X', 'M', '5', '4', '3', '2', '1', 'PLUG-IN HÍBRIDO']
 
     return (
         <List>
             {filters && filters.map(filter => (
                 <Item key={filter}>
-                    <Input type='checkbox' />
-                    <Label>
+                    <Button  onClick={() => onFilterLineClick(filter)} >
                         {filter}
-                    </Label>
+                    </Button>
                 </Item>
             ))}
         </List>

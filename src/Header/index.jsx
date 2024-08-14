@@ -164,7 +164,10 @@ export const Header = () => {
                 {iconMenuBurguerVisibility && <BurguerIcon />}
 
                 <IconAndNavContainer>
-                    {iconLogoPageVisibility && <PageIcon src={logo} alt="Logo Bmw" />}
+
+                    <StyledLink to='/'>
+                        {iconLogoPageVisibility && <PageIcon src={logo} alt="Logo Bmw" />}
+                    </StyledLink>
 
                     <NavList>
                         <StyledLink to='modelos'>

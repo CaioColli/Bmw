@@ -1,11 +1,17 @@
+import { useContext, useState } from 'react'
 import { IoAddOutline } from 'react-icons/io5'
 import styled from 'styled-components'
+import { FilterContext } from '../FilterContext'
 
-const List = styled.ul`
+const Form = styled.form`
     display: flex;
     gap: 16px;
     position: relative;
     width: fit-content;
+`
+
+const List = styled.ul`
+    
 `
 
 const Item = styled.li`
@@ -35,6 +41,7 @@ const Input = styled.input`
     &:checked + ${Label} {
         border-color: var(--black);
         color: var(--black);
+        box-shadow: 5px 5px var(--black);
     }
 
     &:hover + ${Label} {
@@ -43,20 +50,42 @@ const Input = styled.input`
     }
 `
 
-export const PrincipalFilter = ({ onCLick }) => {
+export const PrincipalFilter = () => {
+    const [selectedValue, setSelectedValue] = useState('')
+
+    const { setFilter } = useContext(FilterContext)
+
     const filters = ['Gasolina', 'Elétrico']
 
+    const handleChange = (event) => {
+        const value = event.target.value
+
+        if (selectedValue === value) {
+            setSelectedValue('')
+            setFilter('All')
+        } else {
+            setSelectedValue(value)
+            setFilter(value)
+        }
+    }
+
     return (
-        <List>
+        <Form>
             {filters && filters.map(filter => (
                 <Item key={filter}>
-                    <Input type='checkbox' />
+                    <Input
+                        type='checkbox'
+                        name='fuelType'
+                        value={filter}
+                        checked={selectedValue === filter}
+                        onChange={handleChange}
+                    />
                     <Label>
                         <IoAddOutline />
                         {filter}
                     </Label>
                 </Item>
             ))}
-        </List>
+        </Form>
     )
 }

@@ -3,7 +3,8 @@ import { useFetch } from '@/Hooks/useFetchCars'
 import { currencyFormat } from '@/Utils/currencyFormat'
 import styled from 'styled-components'
 import { IoIosArrowForward } from 'react-icons/io'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { FilterContext } from '../FilterContext'
 
 const Container = styled.section`
     display: flex;
@@ -13,6 +14,7 @@ const Container = styled.section`
 
 const CarDetail = styled.details`
     pointer-events: none;
+    scroll-margin-top: 96px;
 
     @media (max-width: 425px) {
         pointer-events: auto;
@@ -55,7 +57,9 @@ const Content = styled.div`
     pointer-events: auto;
 `
 
-export const Cars = () => {
+export const Cars = ({ onCategoryChange }) => {
+    const categoryRef = useRef({})
+
     const categories = ['BMW i', 'X', 'M', '5', '4', '3', '2', '1', 'PLUG-IN HÍBRIDO']
 
     const [isDetailOpen, setIsDetailOpen] = useState(true)
@@ -87,11 +91,22 @@ export const Cars = () => {
         return acc;
     }, {});
 
+    const { filter } = useContext(FilterContext)
+
     const renderCategoryDetails = (category) => {
-        const models = modelsByCategory[category] || []
+        let models = modelsByCategory[category] || []
+
+        if (filter && filter !== 'All') {
+            models = models.filter(car => car.FiltroCombustível === filter)
+        }
+
         return (
             models.length > 0 && (
-                <CarDetail open={isDetailOpen} key={category}>
+                <CarDetail
+                    open={isDetailOpen}
+                    key={category}
+                    ref={ref => (categoryRef.current[category] = ref)}
+                >
                     <Summary>
                         {category}
                         <IconWrapper />
@@ -112,6 +127,16 @@ export const Cars = () => {
             )
         )
     }
+
+    useEffect(() => {
+        if (onCategoryChange) {
+            const categoryRefElement = categoryRef.current[onCategoryChange];
+            console.log('Scrolling to:', onCategoryChange, categoryRefElement);
+            if (categoryRefElement) {
+                categoryRefElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [onCategoryChange])
 
     return (
         <Container>

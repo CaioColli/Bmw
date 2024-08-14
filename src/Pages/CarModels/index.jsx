@@ -3,6 +3,10 @@ import { PrincipalFilter } from './Inputs/principalFilter'
 import { LineFilter } from './Inputs/lineFilter'
 import { MoreFilter } from './Inputs/moreFilter'
 import { Cars } from './Cars'
+import { FilterProvider } from './FilterContext'
+import { useContext, useState } from 'react'
+import { ModalFilters } from './ModalFilters'
+import { ModalContext } from '@/Modal/ModalContext'
 
 const Container = styled.section`
     padding: 48px;
@@ -25,30 +29,40 @@ const SubTitle = styled.h2`
 const FiltersContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
 `
 
-
 export const AllCarsModels = () => {
+    const { open } = useContext(ModalContext)
+
+    const [selectedCategory, setSelectedCategory] = useState(null)
+
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category)
+    }
+
     return (
-        <Container>
-            <Title>
-                Modelos e Preços
-            </Title>
+        <FilterProvider>
+            <Container>
+                <Title>
+                    Modelos e Preços
+                </Title>
 
-            <SubTitle>
-                Filtro
-            </SubTitle>
+                <SubTitle>
+                    Filtro
+                </SubTitle>
 
-            <FiltersContainer>
-                <PrincipalFilter />
-                <MoreFilter />
-            </FiltersContainer>
+                <FiltersContainer>
+                    <PrincipalFilter />
+                    <MoreFilter />
+                </FiltersContainer>
 
-            <LineFilter />
+                <LineFilter onFilterLineClick={handleCategoryClick} />
 
-            <Cars />
+                <Cars onCategoryChange={selectedCategory} />
 
-        </Container>
+                {open && <ModalFilters />}
+            </Container>
+        </FilterProvider>
     )
 }

@@ -12,8 +12,10 @@ a, p, li, span {
 :root {
     --black: #000000;
     --gray: #888C8D;
+    --lightGray: #C0C0C0;
     --white: #ffffff;
     --grayBorder: #C0C0C0;
     --grayBg: #262626;
     --fontLato: 'Lato'
+    --fontOpen: 'OpenSans'
 }

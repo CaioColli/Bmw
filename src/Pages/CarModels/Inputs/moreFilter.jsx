@@ -1,3 +1,5 @@
+import { ModalContext } from '@/Modal/ModalContext'
+import { useContext, useEffect, useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import styled from 'styled-components'
 
@@ -17,7 +19,7 @@ const ArrowIcon = styled(IoIosArrowForward)`
 
 const Label = styled.label`
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
 `
 
 const Input = styled.input`
@@ -33,9 +35,23 @@ const Input = styled.input`
 `
 
 export const MoreFilter = () => {
+    const { open, setOpen } = useContext(ModalContext)
+    const [isChecked, setIsChecked] = useState(open) 
+
+    const handleCLick = () => {
+        setOpen(!open)
+        setIsChecked(!isChecked)
+    }
+
+    useEffect(() => {
+        if (!open) {
+            setIsChecked(false)
+        }
+    }, [open])
+
     return (
         <Container>
-                <Input type='checkbox' />
+                <Input type='checkbox' checked={isChecked} onChange={handleCLick} />
             <ArrowIcon />
                 <Label>
                     Mais filtros

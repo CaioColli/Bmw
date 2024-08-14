@@ -86,7 +86,7 @@ const ValueCar = styled.span.withConfig({
 })`
     display: ${props => props.valueCarDisplay || 'block'};
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
 `
 const StyledLink = styled(Link)`
     all: unset;
