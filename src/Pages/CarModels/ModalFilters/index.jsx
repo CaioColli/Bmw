@@ -4,8 +4,10 @@ import { SubTitle } from '@/SubTitle'
 import styled from 'styled-components'
 import { InputModal } from './Inputs'
 import { FaRegTrashAlt } from 'react-icons/fa'
+import { useContext, useEffect, useState } from 'react'
+import { FilterContext } from '../FilterContext'
 
-const Content = styled.div`
+const Content = styled.form`
     padding: 48px;
 `
 
@@ -48,49 +50,51 @@ const TrashText = styled.p`
 `
 
 export const ModalFilters = () => {
+    const { setFilters } = useContext(FilterContext)
+
     const bodyworkType = [
-        {
-            icon: './public/IconeSedã.svg',
-            name: 'Sedã'
-        }, {
-            icon: './public/IconeSportsActivity.svg',
-            name: 'Sports Activity Vehicle'
-
-        }, {
-            icon: './public/IconeCabrio.svg',
-            name: 'Cabrio'
-
-        }, {
-            icon: './public/IconeHatch.svg',
-            name: 'Hatch'
-
-        }, {
-            icon: './public/IconeCoupé.svg',
-            name: 'Coupé'
-        }, {
-            icon: './public/IconeBMWi.svg',
-            name: 'BMW i'
-        }, {
-            icon: './public/IconeSportsCoupé.svg',
-            name: 'Sports Activity Coupé'
-        }
+        { icon: './public/IconeSedã.svg', name: 'Sedã' },
+        { icon: './public/IconeSportsActivity.svg', name: 'Sports Activity Vehicle' }, 
+        { icon: './public/IconeCabrio.svg', name: 'Cabrio' }, 
+        { icon: './public/IconeHatch.svg', name: 'Hatch' }, 
+        { icon: './public/IconeCoupé.svg', name: 'Coupé' }, 
+        { icon: './public/IconeBMWi.svg', name: 'BMW i' }, 
+        { icon: './public/IconeSportsCoupé.svg', name: 'Sports Activity Coupé' }
     ]
 
     const fuelType = [
-        {
-            icon: './public/IconeGasolina.svg',
-            name: 'Gasolina'
-        }, {
-            icon: './public/IconeHibrido.svg',
-            name: 'Plug-in Híbrido'
-        }, {
-            icon: './public/IconeGasolina.svg',
-            name: 'ActiveFlex'
-        }, {
-            icon: './public/IconeEletrico.svg',
-            name: 'Elétrico'
-        }
+        { icon: './public/IconeGasolina.svg', name: 'Gasolina' }, 
+        { icon: './public/IconeHibrido.svg', name: 'Plug-in Híbrido' }, 
+        { icon: './public/IconeGasolina.svg', name: 'ActiveFlex'}, 
+        { icon: './public/IconeEletrico.svg', name: 'Elétrico' }
     ]
+
+    const handleChangeBodywork = (event) => {
+        const value = event.target.value
+
+        setFilters(prevFilters => ({
+            ...prevFilters,
+            bodywork: prevFilters.bodywork.includes(value) 
+                ? prevFilters.bodywork.filter(item => item !== value)
+                : [...prevFilters.bodywork, value]
+        }))
+    }
+
+    const handleChangeFuelType = (event) => {
+        const value = event.target.value
+
+        setFilters(prevFilters => ({
+            ...prevFilters,
+            fueltype: prevFilters.fueltype.includes(value) 
+                ? prevFilters.fueltype.filter(item => item !== value)
+                : [...prevFilters.fueltype, value]
+        }))
+    }
+
+    const handleResetFilters = (event) => {
+        event.preventDefault()
+        setFilters({ bodywork: [], fueltype: [] })
+    }
 
     return (
         <>
@@ -110,6 +114,7 @@ export const ModalFilters = () => {
                                     <InputModal
                                         key={filter.name}
                                         valueinput={filter.name}
+                                        onChange={handleChangeBodywork}
                                         icon={filter.icon}
                                         label={filter.name}
                                     />
@@ -129,6 +134,7 @@ export const ModalFilters = () => {
                                     <InputModal
                                         key={filter.name}
                                         valueinput={filter.name}
+                                        onChange={handleChangeFuelType}
                                         icon={filter.icon}
                                         label={filter.name}
                                     />
@@ -137,7 +143,7 @@ export const ModalFilters = () => {
                         </Filters>
                     </FilterContent>
 
-                    <DeleteFilterContent>
+                    <DeleteFilterContent onClick={handleResetFilters}>
 
                         <TrashIcon />
                         <TrashText>

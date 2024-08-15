@@ -59,6 +59,7 @@ const Content = styled.div`
 
 export const Cars = ({ onCategoryChange }) => {
     const categoryRef = useRef({})
+    const { filters } = useContext(FilterContext)
 
     const categories = ['BMW i', 'X', 'M', '5', '4', '3', '2', '1', 'PLUG-IN HÍBRIDO']
 
@@ -82,23 +83,32 @@ export const Cars = ({ onCategoryChange }) => {
 
         // Se category não tiver no objeto, é adicionado como um array vazio
         if (!acc[category]) {
-            acc[category] = [];
+            acc[category] = []
         }
 
         // Adiciona car ao array correspondente a sua categoria 
-        acc[category].push(car);
+        acc[category].push(car)
 
-        return acc;
-    }, {});
+        return acc
+    }, {})
 
-    const { filter } = useContext(FilterContext)
+    const filteredModelsByCategory = Object.keys(modelsByCategory).reduce((acc, category) => {
+        const models = modelsByCategory[category].filter(car => {
+            // Verifica se o carro corresponde a algum filtro selecionado para carroceria ou tipo de combustível
+            const bodyworkMatch = filters.bodywork.length === 0 || filters.bodywork.includes(car.FiltroCarroçaria)
+            const fuelTypeMatch = filters.fueltype.length === 0 || filters.fueltype.includes(car.FiltroCombustível)
+            return bodyworkMatch && fuelTypeMatch
+        })
+
+        if (models.length > 0) {
+            acc[category] = models
+        }
+
+        return acc
+    }, {})
 
     const renderCategoryDetails = (category) => {
-        let models = modelsByCategory[category] || []
-
-        if (filter && filter !== 'All') {
-            models = models.filter(car => car.FiltroCombustível === filter)
-        }
+        let models = filteredModelsByCategory[category] || []
 
         return (
             models.length > 0 && (

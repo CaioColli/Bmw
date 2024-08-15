@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { FilterContext } from '../../FilterContext'
+import { useContext } from 'react'
 
 const Container = styled.div`
     align-items: center;
@@ -49,9 +51,9 @@ const Input = styled.input`
     }
     
     &:checked::after {
-        content: '✓';  /* Vzinho de selecionado */
-        color: white;  /* Cor do checkmark */
-        font-size: 14px;  /* Tamanho do checkmark */
+        content: '✓';
+        color: white;
+        font-size: 14px;
         display: block;
         top: 50%;
         left: 50%;
@@ -61,13 +63,19 @@ const Input = styled.input`
 `
 
 
-export const InputModal = ({ valueinput, icon, label }) => {
+export const InputModal = ({ valueinput, onChange, icon, label }) => {
+    const { filters } = useContext(FilterContext)
+    const isChecked = filters.bodywork.includes(valueinput) || filters.fueltype.includes(valueinput)
+
     return (
         <Container>
             <Input
                 type='checkbox'
                 name='BodyworkType'
-                value={valueinput} />
+                value={valueinput} 
+                checked={isChecked}
+                onChange={onChange}  
+            />
 
             <Content>
                 <Icon bgImage={icon} />

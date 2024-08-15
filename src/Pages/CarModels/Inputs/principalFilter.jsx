@@ -51,37 +51,31 @@ const Input = styled.input`
 `
 
 export const PrincipalFilter = () => {
-    const [selectedValue, setSelectedValue] = useState('')
-
-    const { setFilter } = useContext(FilterContext)
-
-    const filters = ['Gasolina', 'Elétrico']
+    const { filters, setFilters } = useContext(FilterContext)
 
     const handleChange = (event) => {
         const value = event.target.value
 
-        if (selectedValue === value) {
-            setSelectedValue('')
-            setFilter('All')
-        } else {
-            setSelectedValue(value)
-            setFilter(value)
-        }
+        setFilters(prevFilters => ({
+            ...prevFilters,
+            fueltype: prevFilters.fueltype.includes(value)
+                ? prevFilters.fueltype.filter(item => item !== value)
+                : [...prevFilters.fueltype, value]
+        }))
     }
 
     return (
         <Form>
-            {filters && filters.map(filter => (
+            {['Gasolina', 'Elétrico'].map(filter => (
                 <Item key={filter}>
                     <Input
                         type='checkbox'
                         name='fuelType'
                         value={filter}
-                        checked={selectedValue === filter}
+                        checked={filters.fueltype.includes(filter)}
                         onChange={handleChange}
                     />
                     <Label>
-                        <IoAddOutline />
                         {filter}
                     </Label>
                 </Item>

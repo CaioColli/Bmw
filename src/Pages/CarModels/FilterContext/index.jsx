@@ -1,14 +1,17 @@
-import { Children, createContext, useState } from 'react'
+import { createContext, useState, useContext } from 'react'
 
 export const FilterContext = createContext()
 
 export const FilterProvider = ({ children }) => {
-    const [filter, setFilter] = useState('All')
+    const [filters, setFilters] = useState({
+        bodywork: [],
+        fueltype: []
+    })
 
-    console.log(filter)
+    console.log(filters)
 
     return (
-        <FilterContext.Provider value={{filter, setFilter}}>
+        <FilterContext.Provider value={{filters, setFilters}}>
             {children}
         </FilterContext.Provider>
     )
