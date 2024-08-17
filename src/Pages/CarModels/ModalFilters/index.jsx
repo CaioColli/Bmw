@@ -53,13 +53,13 @@ export const ModalFilters = () => {
     const { setFilters } = useContext(FilterContext)
 
     const bodyworkType = [
-        { icon: './public/IconeSedã.svg', name: 'Sedã' },
-        { icon: './public/IconeSportsActivity.svg', name: 'Sports Activity Vehicle' }, 
-        { icon: './public/IconeCabrio.svg', name: 'Cabrio' }, 
-        { icon: './public/IconeHatch.svg', name: 'Hatch' }, 
-        { icon: './public/IconeCoupé.svg', name: 'Coupé' }, 
-        { icon: './public/IconeBMWi.svg', name: 'BMW i' }, 
-        { icon: './public/IconeSportsCoupé.svg', name: 'Sports Activity Coupé' }
+        { icon: '/IconeSedã.svg', name: 'Sedã' },
+        { icon: '/IconeSportsActivity.svg', name: 'Sports Activity Vehicle' }, 
+        { icon: '/IconeCabrio.svg', name: 'Cabrio' }, 
+        { icon: '/IconeHatch.svg', name: 'Hatch' }, 
+        { icon: '/IconeCoupé.svg', name: 'Coupé' }, 
+        { icon: '/IconeBMWi.svg', name: 'BMW i' }, 
+        { icon: '/IconeSportsCoupé.svg', name: 'Sports Activity Coupé' }
     ]
 
     const fuelType = [
