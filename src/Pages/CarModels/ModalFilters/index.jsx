@@ -9,6 +9,10 @@ import { FilterContext } from '../FilterContext'
 
 const Content = styled.form`
     padding: 48px;
+
+    @media (max-width: 768px) {
+        padding: 24px;
+    }
 `
 
 const TitleFilter = styled.h3`

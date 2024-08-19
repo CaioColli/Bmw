@@ -15,14 +15,16 @@ export function pageAnimation(element, initialPosition) {
 
     // Usei o setTimeout para executar a animação após o carregamento inicial da página, evitando bug visual.
     setTimeout(() => {
-        ScrollTrigger.create({
-            trigger: element,
-            start: 'top 80%',
-            end: 'bottom top',
-            markers: false,
-            onEnter: () => animation.play(),
-            //onLeaveBack: () => animation.pause().reverse() // Volta ao estado inicial quando rola para cima.
-            onLeaveBack: () => animation.reverse()
-        })
+        
     }, 400)
+
+    ScrollTrigger.create({
+        trigger: element,
+        start: 'top 80%',
+        end: 'bottom top',
+        markers: false,
+        onEnter: () => animation.play(),
+        //onLeaveBack: () => animation.pause().reverse() // Volta ao estado inicial quando rola para cima.
+        onLeaveBack: () => animation.reverse()
+    })
 }

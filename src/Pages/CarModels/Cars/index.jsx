@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { FilterContext } from '../FilterContext'
+import { CarNotFind } from './NotFind'
 
 const Container = styled.section`
     display: flex;
@@ -18,6 +19,7 @@ const CarDetail = styled.details`
 
     @media (max-width: 425px) {
         pointer-events: auto;
+        margin-top: 48px;
     }
 `
 
@@ -32,6 +34,7 @@ const Summary = styled.summary`
     width: fit-content;
 
     @media (max-width: 425px) {
+        font-size: 24px;
         list-style: block;
     }
 `
@@ -57,6 +60,7 @@ const Content = styled.div`
     pointer-events: auto;
 `
 
+
 export const Cars = ({ onCategoryChange }) => {
     const categoryRef = useRef({})
     const { filters } = useContext(FilterContext)
@@ -81,12 +85,10 @@ export const Cars = ({ onCategoryChange }) => {
     const modelsByCategory = data.reduce((acc, car) => {
         const category = car.FiltroLinha
 
-        // Se category não tiver no objeto, é adicionado como um array vazio
         if (!acc[category]) {
             acc[category] = []
         }
 
-        // Adiciona car ao array correspondente a sua categoria 
         acc[category].push(car)
 
         return acc
@@ -94,7 +96,6 @@ export const Cars = ({ onCategoryChange }) => {
 
     const filteredModelsByCategory = Object.keys(modelsByCategory).reduce((acc, category) => {
         const models = modelsByCategory[category].filter(car => {
-            // Verifica se o carro corresponde a algum filtro selecionado para carroceria ou tipo de combustível
             const bodyworkMatch = filters.bodywork.length === 0 || filters.bodywork.includes(car.FiltroCarroçaria)
             const fuelTypeMatch = filters.fueltype.length === 0 || filters.fueltype.includes(car.FiltroCombustível)
             return bodyworkMatch && fuelTypeMatch
@@ -107,50 +108,51 @@ export const Cars = ({ onCategoryChange }) => {
         return acc
     }, {})
 
-    const renderCategoryDetails = (category) => {
-        let models = filteredModelsByCategory[category] || []
-
-        return (
-            models.length > 0 && (
-                <CarDetail
-                    open={isDetailOpen}
-                    key={category}
-                    ref={ref => (categoryRef.current[category] = ref)}
-                >
-                    <Summary>
-                        {category}
-                        <IconWrapper />
-                    </Summary>
-                    <Content>
-                        {models.map(car => (
-                            <CardCar
-                                key={car.ID_Carro}
-                                carImage={car.FotoFrontal}
-                                title={car.Modelo}
-                                engineType={car.FiltroCombustível}
-                                valueCar={currencyFormat(car.Preço)}
-                                cardCursor='pointer'
-                            />
-                        ))}
-                    </Content>
-                </CarDetail>
-            )
-        )
-    }
+    const hasCars = Object.keys(filteredModelsByCategory).length > 0
 
     useEffect(() => {
         if (onCategoryChange) {
-            const categoryRefElement = categoryRef.current[onCategoryChange];
-            console.log('Scrolling to:', onCategoryChange, categoryRefElement);
+            const categoryRefElement = categoryRef.current[onCategoryChange]
             if (categoryRefElement) {
-                categoryRefElement.scrollIntoView({ behavior: 'smooth' });
+                categoryRefElement.scrollIntoView({ behavior: 'smooth' })
             }
         }
     }, [onCategoryChange])
 
     return (
         <Container>
-            {categories.map(category => renderCategoryDetails(category))}
+            {hasCars ? (
+                categories.map(category => {
+                    const models = filteredModelsByCategory[category] || []
+
+                    return models.length > 0 && (
+                        <CarDetail
+                            open={isDetailOpen}
+                            key={category}
+                            ref={ref => (categoryRef.current[category] = ref)}
+                        >
+                            <Summary>
+                                {category}
+                                <IconWrapper />
+                            </Summary>
+                            <Content>
+                                {models.map(car => (
+                                    <CardCar
+                                        key={car.ID_Carro}
+                                        carImage={car.FotoFrontal}
+                                        title={car.Modelo}
+                                        engineType={car.FiltroCombustível}
+                                        valueCar={currencyFormat(car.Preço)}
+                                        cardCursor='pointer'
+                                    />
+                                ))}
+                            </Content>
+                        </CarDetail>
+                    )
+                })
+            ) : (
+                <CarNotFind />
+            )}
         </Container>
     )
 }

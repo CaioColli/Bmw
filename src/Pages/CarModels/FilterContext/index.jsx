@@ -8,8 +8,6 @@ export const FilterProvider = ({ children }) => {
         fueltype: []
     })
 
-    console.log(filters)
-
     return (
         <FilterContext.Provider value={{filters, setFilters}}>
             {children}

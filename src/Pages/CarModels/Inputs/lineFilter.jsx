@@ -6,6 +6,10 @@ const List = styled.ul`
     margin: 24px 0 48px 0;
     position: relative;
     width: fit-content;
+
+    @media (max-width: 425px) {
+        display: none;
+    }
 `
 
 const Item = styled.li`
