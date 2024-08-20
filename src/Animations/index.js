@@ -13,11 +13,6 @@ export function pageAnimation(element, initialPosition) {
         opacity: 1
     })
 
-    // Usei o setTimeout para executar a animação após o carregamento inicial da página, evitando bug visual.
-    setTimeout(() => {
-        
-    }, 400)
-
     ScrollTrigger.create({
         trigger: element,
         start: 'top 80%',

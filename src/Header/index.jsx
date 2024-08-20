@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import logo from '/public/Icone BMW.svg'
 import { IoSearchOutline } from 'react-icons/io5'
 import { FiAlignLeft } from 'react-icons/fi'
-import { Input } from '../Input'
+import { Input } from './Input'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
@@ -175,7 +175,11 @@ export const Header = () => {
                                 Modelos
                             </NavItem>
                         </StyledLink>
-                        <NavItem><NavLink>Lançamento</NavLink></NavItem>
+                        <StyledLink to='lançamento'>
+                            <NavItem>
+                                Lançamento
+                            </NavItem>
+                        </StyledLink>
                         <NavItem><NavLink>Descubra a BMW</NavLink></NavItem>
                     </NavList>
                 </IconAndNavContainer>

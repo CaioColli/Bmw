@@ -13,6 +13,7 @@ const Btn = styled.button.withConfig({
     padding: ${props => props.buttonPadding || '8px 16px'};
     justify-content: center;
     transition: 0.2s ease-in-out;
+    max-width: 145px;
 
     &:hover {
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);

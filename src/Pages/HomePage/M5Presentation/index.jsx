@@ -5,23 +5,32 @@ import { useEffect, useRef } from 'react'
 import { pageAnimation } from '@/Animations'
 
 const Container = styled.section`
-    position: relative;
-
-`
-
-const Image = styled.img`
     width: 100%;
-    height: 100%;
+    height: 80vh;
+    background-image: url(${backgroundImage});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `
 
 const Contain = styled.div`
-    position: absolute;
-    bottom: 48px;
-    left: 48px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px;
 
     @media (max-width: 425px) {
-        bottom: 16px;
-        left: 16px;
+        padding: 24px;
+    }
+`
+
+const Title = styled.h1`
+    font-size: 48px;
+    font-weight: bold;
+
+    @media (max-width: 425px) {
+        font-size: 24px;
     }
 `
 
@@ -36,9 +45,11 @@ export const M5Presentation = () => {
 
     return (
         <Container ref={container}>
-            <Image src={backgroundImage} />
-
             <Contain>
+                <Title>
+                    M5 COMPETITION
+                </Title>
+
                 <Button
                     buttonDisplay='flex'
                     buttonPadding='16px 32px'
