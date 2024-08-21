@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { Button } from './car'
+import { Button } from './Button'
 
 const Container = styled.div`
     position: relative;
@@ -13,6 +13,11 @@ const Engine = styled.svg`
     height: 210px;
     fill: none;
     filter: blur(5px);
+
+    @media (max-width: 425px) {
+        max-width: 250px;
+        height: 200px;
+    }
 `
 
 const FilterEngine = styled.g`
@@ -71,9 +76,7 @@ export const SvgEngine = () => {
 
     return (
         <Container>
-            <Button ref={buttonRef}>
-                Passe o mouse
-            </Button>
+            <Button ref={buttonRef} />
 
             <Engine viewBox="0 0 370 250" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" ref={svgEngineRef}>
                 <g id="Group 1">

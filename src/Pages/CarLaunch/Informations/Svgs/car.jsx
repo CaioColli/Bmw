@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { Button } from './Button'
 
 const Container = styled.div`
     position: relative;
@@ -12,30 +13,16 @@ const Car = styled.svg`
     height: 284px;
     fill: none;
     filter: blur(5px);
+
+    @media (max-width: 425px) {
+        max-width: 250px;
+        height: 200px;
+    }
 `
 
 const FilterCar = styled.g`
     filter: brightness(30%);
     transition: 1s ease;
-`
-
-export const Button = styled.button`
-    all: unset;
-    align-items: center;
-    background-color: rgba(0,0,0, 60%);
-    bottom: 50%;
-    color: var(--white);
-    display: flex;
-    font-weight: bold;
-    font-size: 14px;
-    height: 50px;
-    justify-content: center;
-    position: absolute;
-    right: 50%;
-    transform: translate(50%, 50%);
-    width: 150px;
-    border-radius: 15px;
-    z-index: 999;
 `
 
 export const SvgCar = () => {
@@ -84,7 +71,7 @@ export const SvgCar = () => {
 
     return (
         <Container>
-            <Button ref={buttonRef}> Passe o mouse </Button>
+            <Button ref={buttonRef} />
 
             <Car viewBox="0 0 376 284" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" ref={svgCarRef}>
                 <g id="Anima&#195;&#167;&#195;&#163;oM5">

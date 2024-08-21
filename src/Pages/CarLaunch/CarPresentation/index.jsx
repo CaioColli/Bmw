@@ -72,7 +72,7 @@ export const CarPresentation = () => {
     const titleRef = useRef(null)
     
     useEffect(() => {
-        const timeLine = gsap.timeline({ defaults: { duration: 0.8 }})
+        const timeLine = gsap.timeline({ defaults: { duration: 0.7 }})
 
         timeLine.to(containerRef.current, {
             filter: 'blur(0px)',

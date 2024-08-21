@@ -9,7 +9,7 @@ const Container = styled.dialog`
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
+    min-width: 800px;
     z-index: 999;
     background-color: var(--white);
     

@@ -92,7 +92,7 @@ const StyledLink = styled(Link)`
     all: unset;
 `
 
-export const CardCar = ({ cardWidth, carWidth, cardHeight, cardCursor, carImage, titleSize, title, engineFontSize, engineType, icon, valueCarDisplay, valueCar, linkTo, onClick, buttonDisplay, buttonPadding }) => {
+export const CardCar = ({ cardWidth, carWidth, cardHeight, cardCursor, carImage, titleSize, title, engineFontSize, engineType, icon, valueCarDisplay, valueCar, linkTo, onClick, flex, large }) => {
     return (
         <Card cardWidth={cardWidth} cardHeight={cardHeight} cardCursor={cardCursor} >
             <CarImage carWidth={carWidth} src={carImage} />
@@ -110,8 +110,8 @@ export const CardCar = ({ cardWidth, carWidth, cardHeight, cardCursor, carImage,
 
                 <StyledLink to={linkTo}>
                     <Button onClick={onClick}
-                        buttonDisplay={buttonDisplay}
-                        buttonPadding={buttonPadding}
+                        flex={flex}
+                        large={large}
                     >
                         DETALHES
                     </Button>

@@ -51,8 +51,8 @@ export const M5Presentation = () => {
                 </Title>
 
                 <Button
-                    buttonDisplay='flex'
-                    buttonPadding='16px 32px'
+                    flex
+                    large
                 >
                     DETALHES
                 </Button>

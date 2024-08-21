@@ -89,8 +89,8 @@ export const Cars = () => {
                                 titleSize='30px'
                                 engineFontSize='16px'
                                 valueCarDisplay='none'
-                                buttonDisplay='flex'
-                                buttonPadding={'16px 32px'}
+                                flex
+                                large
                             />
                         ))}
                     </ContentCards>
