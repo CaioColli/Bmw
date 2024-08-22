@@ -43,13 +43,13 @@ export const SvgCar = () => {
             .to(svgCarRef.current.querySelectorAll('#Seta'), {
                 fill: '#CD4A00',
             })
+            .to(svgCarRef.current.querySelectorAll('#LED-Grade'), {
+                fill: '#ffff'
+            })
             .to(svgCarRef.current.querySelectorAll('#LED-Principal'), {
                 fill: '#ffff'
             })
             .to(svgCarRef.current.querySelectorAll('#LED-Secundario'), {
-                fill: '#ffff'
-            })
-            .to(svgCarRef.current.querySelectorAll('#LED-Grade'), {
                 fill: '#ffff'
             })
             .to(svgCarRef.current.querySelector('#Carro'), {
@@ -62,9 +62,11 @@ export const SvgCar = () => {
 
         const svgElement = svgCarRef.current
         svgElement.addEventListener('mouseenter', handleMouseEnter)
+        svgElement.addEventListener('click', handleMouseEnter)
 
         return () => {
             svgElement.removeEventListener('mouseenter', handleMouseEnter)
+            svgElement.removeEventListener('click', handleMouseEnter)
         }
 
     }, [])
@@ -78,10 +80,10 @@ export const SvgCar = () => {
                     <FilterCar id="Carro" filter='none'>
                         <rect id="Carro_2" width="376" height="284" fill="url(#pattern0_256_1296)" />
                     </FilterCar>
-                    <path id="LED-Secundario" d="M319 122.5L318 121.5V121H322.5L324.5 123.5V133.5V136.5L322.5 138.5H321V134.5V127V125L319 122.5Z" fill='none' />
-                    <path id="LED-Principal" d="M346 119.5L343 117L345.5 115L349 117.5L350.5 119.5V131L347.5 134V131V125.5V122L346 119.5Z" fill='none' />
-                    <path id="LED-Secundario" d="M53.5 138V126L56.436 122.085L53.5 120L50 124.5V134L53.5 138Z" fill='none' />
-                    <path id="LED-Principal" d="M27.5 134V122L31.5 116.5L27.5 116L24 119.5V130.5L27.5 134Z" fill='none' />
+                    <path id="LED-Principal" d="M319 122.5L318 121.5V121H322.5L324.5 123.5V133.5V136.5L322.5 138.5H321V134.5V127V125L319 122.5Z" fill='none' />
+                    <path id="LED-Secundario" d="M346 119.5L343 117L345.5 115L349 117.5L350.5 119.5V131L347.5 134V131V125.5V122L346 119.5Z" fill='none' />
+                    <path id="LED-Principal" d="M53.5 138V126L56.436 122.085L53.5 120L50 124.5V134L53.5 138Z" fill='none' />
+                    <path id="LED-Secundario" d="M27.5 134V122L31.5 116.5L27.5 116L24 119.5V130.5L27.5 134Z" fill='none' />
                     <path id="LED-Grade" d="M199 171L196 169L195 169.5L195.5 170.5L198 172L200.5 173L203 173.5H224H231L239.5 173L245 172.5L254 172L258 171L259.5 170L264.5 166.5L271.5 161L274.5 158L279 153L282.5 148.5L284.5 144V140V134.5L284 130L283 127.5L281 125L279 123.5L276 122L273 121L270 120H267H261.5H251.5H241.5H234H228.5H220H215L210.5 120.5L207.5 121L204.5 122L198 125L195 127V128H196.5L200.5 125.5L205.5 123.5L210 122.5L219.5 122L230 121.5H253H265.5L270 122L275.5 123.5L280 126L282 128.5L282.5 134.5V140L282 144L280.5 147.5L277.5 151.5L273 156.5L269.5 160L262.5 165.5L257.5 169L253.5 170L245 170.5L239.5 171L231 171.5L224 172H212H206.5H203L200.5 171.5L199 171Z" fill='none' />
                     <path id="LED-Grade" d="M178.844 171.477L181.961 169.458L183 169.963L182.48 170.972L179.883 172.486L177.285 173.495L174.687 174H152.866H145.592L136.76 173.495L131.045 172.991L121.693 172.486L117.536 171.477L115.978 170.467L110.782 166.935L103.508 161.383L100.391 158.355L95.7151 153.308L92.0782 148.766L90 144.224V140.187V134.636L90.5196 130.093L91.5587 127.57L93.6369 125.047L95.7151 123.533L98.8324 122.019L101.95 121.009L105.067 120H108.184H113.899H124.291H134.682H142.475H148.19L157 120.505L162.5 121H167L170 121.514L173 123L175.5 124L177.5 125.5L178 126L179 127L179.052 127.103C179.265 127.531 178.977 128.039 178.5 128.075L177.5 127.607L175.5 126L174 125L171 123.5L167.413 122.523L157.542 122.019L146.631 121.514H122.732H109.743L105.067 122.019L99.352 123.533L94.676 126.056L92.5978 128.579L92.0782 134.636V140.187L92.5978 144.224L94.1564 147.757L97.2737 151.794L101.95 156.841L105.587 160.374L112.86 165.925L118.056 169.458L122.212 170.467L131.045 170.972L136.76 171.477L145.592 171.981L152.866 172.486H165.335H171.05H174.687L177.285 171.981L178.844 171.477Z" fill='none' />
                     <path id="Seta" d="M363.5 65L345.5 66.5L345 68L364 66.5L363.5 65Z" fill='none' />

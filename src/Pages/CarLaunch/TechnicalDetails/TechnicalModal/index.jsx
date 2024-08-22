@@ -35,6 +35,10 @@ const Texts = styled.div`
 const Title = styled.h1`
     font-size: 48px;
     font-weight: bold;
+
+    @media (max-width: 425px) {
+        font-size: 36px;
+    }
 `
 
 const Span = styled.span`

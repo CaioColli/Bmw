@@ -35,11 +35,6 @@ export const Title = styled.h1`
     font-weight: bold;
 `
 
-export const SubTitle = styled.h2`
-    font-size: 36px;
-    font-weight: 500;
-`
-
 export const Paragraph = styled.p`
     font-size: 18px;
     font-weight: 500;

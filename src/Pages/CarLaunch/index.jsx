@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { CarPresentation } from './CarPresentation'
 import { Informations } from './Informations'
 import { Picture } from './TechnicalDetails'
+import { ExteriorDesign } from './ExteriorDesign'
+import { InteriorDesign } from './InteriorDesign'
 
 const Container = styled.div`
     display: flex;
@@ -20,6 +22,8 @@ export const CarLaunch = () => {
             <CarPresentation />
             <Informations />
             <Picture />
+            <ExteriorDesign />
+            <InteriorDesign />
         </Container>
     )
 }

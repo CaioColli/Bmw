@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { Card } from '../Card'
 import { SvgCar } from '../Svgs/car'
-import { Paragraph, SubTitle, Texts, Title } from '..'
+import { Paragraph, Texts, Title } from '..'
 import { SvgEngine } from '../Svgs/engine'
+import { SubTitle } from '@/SubTitle'
 
 const Container = styled.div.withConfig({
     shouldForwardProp: (prop) => !['column'].includes(prop)
@@ -45,9 +46,7 @@ export const CardsContainer = () => {
                         ICÔNICA
                     </Title>
 
-                    <SubTitle>
-                        Brilho Icônico da BMW
-                    </SubTitle>
+                    <SubTitle text='Brilho Icônico da BMW' />
 
                     <Paragraph>
                         A grade M finalizada em preto de alto brilho com Brilho Icônico da BMW e as luzes M Shadow Line conferem ao BMW M5 uma aparência inconfundível.

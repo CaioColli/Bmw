@@ -10,6 +10,10 @@ const Container = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     gap: 48px;
+
+    @media (max-width: 425px) {
+        gap: 24px;
+    }
 `
 
 const Contain = styled.div.withConfig({
