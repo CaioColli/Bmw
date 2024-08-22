@@ -13,8 +13,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ModalProvider>
         <Routes>
-          <Route path='/' element={<PagePattern />}>
-            <Route index element={<HomePage />} />
+          <Route element={<PagePattern />}>
+            <Route path='/' element={<HomePage />} />
             <Route path='modelos' element={<AllCarsModels />} />
             <Route path='lançamento' element={<CarLaunch />} />
             <Route path='*' element={<div> Nada </div>} />
