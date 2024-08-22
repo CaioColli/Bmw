@@ -11,12 +11,18 @@ const Container = styled.div``
 const Content = styled.div`
     align-items: flex-start;
     display: flex;
+    flex-wrap: wrap;
     gap: 24px;
-    width: 100%;
+    justify-content: center;
     padding: 48px;
+    width: 100%;
 `
 const Image = styled.img`
     max-width: 500px;
+
+    @media (max-width: 425px) {
+        max-width: 250px;
+    }
 `
 
 const Texts = styled.div`
@@ -31,17 +37,20 @@ const Title = styled.h1`
     font-weight: bold;
 `
 
+const Span = styled.span`
+    font-size: 14px;
+    color: var(--gray);
+`
+
 const Paragraph = styled.p`
     font-size: 18px;
 `
 
-const Footer = styled.footer.withConfig({
-    shouldForwardProp: (prop) => !['hasPrev'].includes(prop)
-})`
+const Footer = styled.footer`
     align-items: center;
     display: flex;
     height: 48px;
-    justify-content: ${props => props.hasPrev ? 'space-between' : 'flex-end'};
+    justify-content: space-between;
     padding: 0 24px;
     gap: 24px;
 `
@@ -89,8 +98,11 @@ export const TechnicalModal = () => {
                         )}
                     </Content>
 
-                    <Footer hasPrev={currentIndex > 0}>
+                    <Footer>
                         {currentIndex > 0 && <IconPrev onClick={handleClickPrevItem} />}
+                        <Span>
+                            {`${currentIndex + 1} / ${data.length}`}
+                        </Span>
                         <IconNext onClick={handleClickNextItem} />
                     </Footer>
                 </Container>

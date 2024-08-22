@@ -12,14 +12,13 @@ const Container = styled.dialog`
     min-width: 800px;
     z-index: 999;
     background-color: var(--white);
-    
+
     @media (max-width: 1024px) {
-        max-width: 672px;
+        min-width: 300px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 425px) {
         height: 90%;
-        max-width: 300px;
         overflow: scroll;
     }
 `
