@@ -4,6 +4,7 @@ import { Informations } from './Informations'
 import { Picture } from './TechnicalDetails'
 import { ExteriorDesign } from './ExteriorDesign'
 import { InteriorDesign } from './InteriorDesign'
+import { Footer } from './Footer'
 
 const Container = styled.div`
     display: flex;
@@ -24,6 +25,7 @@ export const CarLaunch = () => {
             <Picture />
             <ExteriorDesign />
             <InteriorDesign />
+            <Footer />
         </Container>
     )
 }

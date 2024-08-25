@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Image } from './ImageComponent'
 import { CardsContainer } from './CardsContainer'
 import { ImagesContainer } from './ImagesContainer'
 
