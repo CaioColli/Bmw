@@ -67,10 +67,10 @@ export const ModalFilters = () => {
     ]
 
     const fuelType = [
-        { icon: './public/IconeGasolina.svg', name: 'Gasolina' }, 
-        { icon: './public/IconeHibrido.svg', name: 'Plug-in Híbrido' }, 
-        { icon: './public/IconeGasolina.svg', name: 'ActiveFlex'}, 
-        { icon: './public/IconeEletrico.svg', name: 'Elétrico' }
+        { icon: '/IconeGasolina.svg', name: 'Gasolina' }, 
+        { icon: '/IconeHibrido.svg', name: 'Plug-in Híbrido' }, 
+        { icon: '/IconeGasolina.svg', name: 'ActiveFlex'}, 
+        { icon: '/IconeEletrico.svg', name: 'Elétrico' }
     ]
 
     const handleChangeBodywork = (event) => {
