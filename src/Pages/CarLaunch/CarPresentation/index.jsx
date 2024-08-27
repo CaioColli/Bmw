@@ -70,13 +70,15 @@ export const CarPresentation = () => {
     const containerRef = useRef(null)
     const cardRef = useRef([])
     const titleRef = useRef(null)
-    
+    gsap.registerPlugin(ScrollTrigger)
+
+
     useEffect(() => {
-        const timeLine = gsap.timeline({ defaults: { duration: 0.7 }})
+        const timeLine = gsap.timeline({ defaults: { duration: 0.5 } })
 
         timeLine.to(containerRef.current, {
             filter: 'blur(0px)',
-            ease: 'expoScale(0.5,7,none)'
+            duration: 1
         })
 
         timeLine.to(titleRef.current, {

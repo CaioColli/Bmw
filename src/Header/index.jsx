@@ -3,12 +3,20 @@ import logo from '/public/Icone BMW.svg'
 import { IoSearchOutline } from 'react-icons/io5'
 import { FiAlignLeft } from 'react-icons/fi'
 import { Input } from './Input'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { SearchContext } from '@/SearchContext'
+import { SideMenu } from './SideMenu'
+import { IoIosCloseCircleOutline } from 'react-icons/io'
 
 const Container = styled.header`
     padding: 0 48px;
+    position: ${props => props.$fixed ? 'fixed' : 'static'};
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: ${props => props.$fixed ? '#ffffff' : 'transparent'};
 
     @media (max-width: 1440px) {
         padding: 0 24px;
@@ -31,9 +39,21 @@ const Content = styled.div`
 `
 
 const BurguerIcon = styled(FiAlignLeft)`
+    color: var(--gray);
+    cursor: pointer;
     display: none;
     font-size: 24px;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+`
+
+const CloseSideIcon = styled(IoIosCloseCircleOutline)`
+    color: var(--gray);
     cursor: pointer;
+    display: none;
+    font-size: 24px;
 
     @media (max-width: 768px) {
         display: block;
@@ -97,9 +117,20 @@ export const Header = () => {
     const [iconMenuBurguerVisibility, setIconMenuBurguerVisibility] = useState(true)
     const [iconLogoPageVisibility, setIconLogoPageVisibility] = useState(true)
     const [resizeTriggered, setResizeTriggered] = useState(false)
+    const [sideMenu, setSideMenu] = useState(false)
 
     const inputRef = useRef()
+    const sideMenuRef = useRef(null)
     const timeLine = gsap.timeline({ defaults: { duration: 0.7 } })
+
+    const { searchValue, setSearchValue } = useContext(SearchContext)
+
+    const navigate = useNavigate()
+
+    const handleSearch = (event) => {
+        setSearchValue(event.target.value)
+        navigate('modelos')
+    }
 
     const handleClick = () => {
         timeLine.to('[data-id="searchIcon"]', {
@@ -116,7 +147,6 @@ export const Header = () => {
                 }
             }
         })
-
     }
 
     const handleClickOutsideInput = (event) => {
@@ -138,6 +168,12 @@ export const Header = () => {
         }
     }
 
+    const handleClickOutsideSideMenu = (event) => {
+        if (sideMenuRef.current && !sideMenuRef.current.contains(event.target)) {
+            setSideMenu(false)
+        }
+    }
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 768) {
@@ -149,19 +185,42 @@ export const Header = () => {
 
         handleResize()
 
-        document.addEventListener('mousedown', handleClickOutsideInput)
+        if (inputRef.current) {
+            inputRef.current.value = searchValue
+        }
+
+        if (searchValue.length <= 0) {
+            document.addEventListener('mousedown', handleClickOutsideInput)
+        }
+        document.addEventListener('mousedown', handleClickOutsideSideMenu)
         window.addEventListener('resize', handleResize)
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutsideInput)
+            document.removeEventListener('mousedown', handleClickOutsideInput)
             window.removeEventListener('resize', handleResize)
         }
-    }, [])
+    }, [searchValue])
+
+    const handleClickOpenSideMenu = () => {
+        setSideMenu(true)
+    }
+
+    const handleClickCloseSideMenu = () => {
+        setSideMenu(false)
+        window.scrollTo(0, 0)
+    }
 
     return (
-        <Container>
+        <Container $fixed={sideMenu}>
             <Content $isCentered={isCentered}>
-                {iconMenuBurguerVisibility && <BurguerIcon />}
+                {iconMenuBurguerVisibility && !sideMenu &&
+                    <BurguerIcon onClick={handleClickOpenSideMenu} />
+                }
+
+                {sideMenu && (
+                    <CloseSideIcon onClick={handleClickCloseSideMenu} />
+                )}
 
                 <IconAndNavContainer>
 
@@ -185,8 +244,16 @@ export const Header = () => {
                 </IconAndNavContainer>
 
                 {iconSearchVisibility && <SearchIcon onClick={handleClick} data-id='searchIcon' />}
-                {inputVisibility && <Input ref={inputRef} />}
+                {inputVisibility && <Input ref={inputRef} onChange={handleSearch} />}
             </Content>
+
+            {sideMenu &&
+                <SideMenu
+                    onClick={handleClickCloseSideMenu}
+                    ref={sideMenuRef}
+                />
+            }
         </Container>
+
     )
 }

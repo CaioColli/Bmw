@@ -7,19 +7,25 @@ import { PagePattern } from './PagePattern'
 import { AllCarsModels } from './Pages/CarModels'
 import { ModalProvider } from './Modal/ModalContext'
 import { CarLaunch } from './Pages/CarLaunch'
+import { SearchProvider } from './SearchContext'
+import { SelectedModelProvider } from './SelectedModelContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <ModalProvider>
-        <Routes>
-          <Route path='/' element={<PagePattern />}>
-            <Route index element={<HomePage />} />
-            <Route path='modelos' element={<AllCarsModels />} />
-            <Route path='lançamento' element={<CarLaunch />} />
-            <Route path='*' element={<div> Nada </div>} />
-          </Route>
-        </Routes>
+        <SearchProvider>
+          <SelectedModelProvider>
+            <Routes>
+              <Route path='/' element={<PagePattern />}>
+                <Route index element={<HomePage />} />
+                <Route path='modelos' element={<AllCarsModels />} />
+                <Route path='lançamento' element={<CarLaunch />} />
+                <Route path='*' element={<div> Nada </div>} />
+              </Route>
+            </Routes>
+          </SelectedModelProvider>
+        </SearchProvider>
       </ModalProvider>
     </BrowserRouter>
   </React.StrictMode>,

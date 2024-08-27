@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import backgroundImage from '/public/ApresentaçãoM5.png'
 import { Button } from '@/Button'
 import { useEffect, useRef } from 'react'
-import { pageAnimation } from '@/Animations'
+import { Link } from 'react-router-dom'
 
 const Container = styled.section`
     width: 100%;
@@ -39,9 +39,13 @@ export const M5Presentation = () => {
 
     useEffect(() => {
         if (container.current) {
-            pageAnimation(container.current, '150px')
+            
         }
     }, [])
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
 
     return (
         <Container ref={container}>
@@ -50,12 +54,14 @@ export const M5Presentation = () => {
                     M5 COMPETITION
                 </Title>
 
-                <Button
-                    flex
-                    large
-                >
-                    DETALHES
-                </Button>
+                <Link to='lançamento' onClick={scrollToTop}>
+                    <Button
+                        flex
+                        large
+                    >
+                        DETALHES
+                    </Button>
+                </Link>
             </Contain>
         </Container>
     )

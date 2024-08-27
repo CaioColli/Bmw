@@ -20,10 +20,14 @@ const InputStyled = styled.input`
     }
 `
 // Usei o forwardRef para ser possivel usar o hook useRef, e para isso é preciso passar dois parametros, sendo eles "props" e "ref"
-export const Input = forwardRef(( props, ref ) => {
+export const Input = forwardRef(({ onChange, ...props }, ref ) => {
     return (
         <Container>
-            <InputStyled ref={ref} placeholder='Pesquisar'/>
+            <InputStyled 
+            ref={ref} 
+            placeholder='Pesquisar'
+            onChange={onChange}
+            />
         </Container>
     )
 })

@@ -1,11 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { ItemsCarroussel } from './ItemsCarroussel'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { CustomLeftArrow, CustomRightArrow } from './Buttons'
-import { pageAnimation } from '../../../Animations'
-import { useFetch } from '../../../Hooks/useFetchCars'
+import { SelectedModelContext } from '@/SelectedModelContext'
+import { useNavigate } from 'react-router-dom'
+import { useFetch } from '@/Hooks/useFetchCars'
 
 const Container = styled.section`
     margin: 48px 0;
@@ -19,18 +20,29 @@ export const Carroussel = () => {
     const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
     const container = useRef(null)
 
+    const { setSelectedModel } = useContext(SelectedModelContext)
+
+    const navigate = useNavigate()
+
+    const handleClick = (modelCar) => {
+        const model = modelCar.Modelo
+        setSelectedModel(model)
+        navigate('modelos')
+        window.scrollTo(0, 0)
+    }
+
     useEffect(() => {
         if (container.current) {
-            pageAnimation(container.current, 150)
+
         }
     }, [data])
 
-    const x3Data = () => {
+    const x6Data = () => {
         return data.find(car => car.ID_Carro === '10')
     }
 
     const m3Data = () => {
-        return data.find(car => car.ID_Carro === '23')
+        return data.find(car => car.ID_Carro === '25')
     }
 
     const serie4Data = () => {
@@ -65,18 +77,20 @@ export const Carroussel = () => {
                 customLeftArrow={<CustomLeftArrow />}
                 customRightArrow={<CustomRightArrow />}
             >
-                {x3Data && <ItemsCarroussel
-                    key={x3Data.ID_carro}
-                    data={x3Data()}
+                {x6Data && <ItemsCarroussel
+                    key={x6Data.ID_carro}
+                    data={x6Data()}
                     subTitleData='MOTOR TURBO V8'
                     SubSubTitleData='625 cv'
+                    onClick={() => handleClick(x6Data())}
                 />}
 
-                {x3Data && <ItemsCarroussel
+                {m3Data && <ItemsCarroussel
                     key={m3Data.ID_carro}
                     data={m3Data()}
                     subTitleData='MOTOR TURBO 6 CILINDROS'
                     SubSubTitleData='510 cv'
+                    onClick={() => handleClick(m3Data())}
                 />}
 
                 {serie4Data && <ItemsCarroussel
@@ -84,6 +98,7 @@ export const Carroussel = () => {
                     data={serie4Data()}
                     subTitleData='MOTOR TURBO 4 CILINDROS'
                     SubSubTitleData='184 cv'
+                    onClick={() => handleClick(serie4Data())}
                 />}
             </Carousel>
         </Container>

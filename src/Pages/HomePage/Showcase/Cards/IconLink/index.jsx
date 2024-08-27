@@ -2,11 +2,12 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import styled from 'styled-components'
 
 export const LinkLogo = styled(FaExternalLinkAlt)`
-    font-size: 30px;
     color: var(--white);
+    cursor: pointer;
+    font-size: 30px;
     position: absolute;
-    top: 5%;
     right: 5%;
+    top: 5%;
     transition: transform 0.5s;
 
     &:hover {

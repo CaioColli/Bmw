@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { CarCard } from './Cards/Card'
 import { Message } from './ShowCaseMessage'
 import styled from 'styled-components'
-import { pageAnimation } from '@/Animations'
 import { useFetch } from '@/Hooks/useFetchCars'
+import { SelectedModelContext } from '@/SelectedModelContext'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.section`
     margin: 48px auto;
@@ -54,9 +55,13 @@ export const Showcase = () => {
 
     const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
 
+    const { setSelectedModel } = useContext(SelectedModelContext)
+
+    const navigate = useNavigate()
+
     useEffect(() => {
         if (container.current) {
-            pageAnimation(container.current, 50 )
+            
         }
     }, [data])
 
@@ -72,14 +77,20 @@ export const Showcase = () => {
         return data.find(car => car.ID_Carro === '10')
     }
 
+    const handleClick = (carModel) => {
+        const model = carModel.Modelo
+        setSelectedModel(model)
+        navigate('modelos')
+    }
+
     return (
         <Container>
             <Content ref={container} >
                 <MessageAndCards>
                     <Message />
                     <Cards>
-                        {m3Data && <CarCard key={m3Data.ID_Carro} data={m3Data()} />}
-                        {x6Data && <CarCard key={x6Data.ID_Carro} data={x6Data()} />}
+                        {m3Data && <CarCard key={m3Data.ID_Carro} data={m3Data()} onClick={() => handleClick(m3Data())} />}
+                        {x6Data && <CarCard key={x6Data.ID_Carro} data={x6Data()} onClick={() => handleClick(x6Data())} />}
                     </Cards>
                 </MessageAndCards>
                 {i7Data && <CarCard
@@ -89,6 +100,7 @@ export const Showcase = () => {
                     cardHeight='720px'
                     widthCar='610px'
                     logoDisplay='block'
+                    onClick={() => handleClick(i7Data())}
                 />}
             </Content>
         </Container>

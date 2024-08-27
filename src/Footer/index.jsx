@@ -3,6 +3,7 @@ import { RiCopyrightLine } from 'react-icons/ri'
 import logo from '/public/Icone BMW.svg'
 import { IoLogoGithub } from 'react-icons/io5'
 import { FaLinkedin } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Container = styled.footer`
     align-items: center;
@@ -66,10 +67,17 @@ const AnchorIcon = styled.span`
 `
 
 export const Footer = () => {
+
+    const scrollToTop = () => {
+        window.screenTop(0, 0)
+    }
+
     return (
         <Container>
             <ContainIcon>
-                <PageIcon src={logo} alt="Logo Bmw" />
+                <Link to='/' onClick={scrollToTop}>
+                    <PageIcon src={logo} alt="Logo Bmw" />
+                </Link>
             </ContainIcon>
 
             <ContainParagraphs>

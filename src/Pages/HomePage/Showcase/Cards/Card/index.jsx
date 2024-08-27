@@ -73,16 +73,16 @@ const LogoBackground  = styled.div.withConfig({
     }
 `
 
-export const CarCard = ({ data, cardWidth, cardHeight, widthCar, logoDisplay }) => {
+export const CarCard = ({ data, cardWidth, cardHeight, onClick, widthCar, logoDisplay }) => {
     return (
         <>
             <Card cardWidth={cardWidth} cardHeight={cardHeight}>
-                <LinkLogo />
+                <LinkLogo onClick={onClick} />
                 <LogoBackground logoDisplay={logoDisplay} />
 
                 {data && (
                     <>
-                        <PhotoCar src={data.FotoFrontal} alt='Foto' widthCar={widthCar} />
+                        <PhotoCar src={data.FotoFrontal} alt={data.Modelo} widthCar={widthCar} />
 
                         <DescriptionCar>
                             <ModelCar> {data.Modelo} </ModelCar>

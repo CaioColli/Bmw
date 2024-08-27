@@ -79,7 +79,7 @@ const Car = styled.img`
     max-width: 80%;
 `
 
-export const ItemsCarroussel = ({ data, subTitleData, SubSubTitleData }) => {
+export const ItemsCarroussel = ({ data, subTitleData, SubSubTitleData, onClick }) => {
     return (
         <Carroussel>
             {data && (
@@ -91,7 +91,7 @@ export const ItemsCarroussel = ({ data, subTitleData, SubSubTitleData }) => {
                             <SubSubTitle> {SubSubTitleData} </SubSubTitle>
                         </Titles>
 
-                        <Link />
+                        <Link onClick={onClick} />
                     </Header>
 
                     <Car src={data.FotoFrontal} />

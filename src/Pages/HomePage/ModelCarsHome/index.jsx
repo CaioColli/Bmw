@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { useFetch } from '@/Hooks/useFetchCars'
 import { SubTitle } from '@/SubTitle'
 import { CardCar } from '@/CardCars'
-import { useEffect, useRef } from 'react'
-import { pageAnimation } from '@/Animations'
-import { Link } from 'react-router-dom'
+import { useContext, useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { SelectedModelContext } from '@/SelectedModelContext'
 
 const Container = styled.section`
     display: flex;
@@ -57,15 +57,28 @@ const Button = styled.button`
 export const Cars = () => {
     const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
     const container = useRef(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (container.current) {
-            pageAnimation(container.current, 150)
+            
         }
     }, [data])
 
     const cars = ['10', '25', '26', '3', '28', '29']
     const selectedCars = data.filter(car => cars.includes(car.ID_Carro))
+
+    const { setSelectedModel } = useContext(SelectedModelContext)
+
+    const handleClick = (carModel) => {
+        setSelectedModel(carModel)
+        navigate('modelos')
+        window.scrollTo(0, 0)
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0)
+    }
 
     return (
         <Container ref={container}>
@@ -80,23 +93,20 @@ export const Cars = () => {
                                 carImage={car.FotoFrontal}
                                 title={car.Modelo}
                                 engineType={car.FiltroCombustível}
-                                linkTo='modelos'
-                                //onClick={() => click(car)}
-                                //
-                                cardWidth='530px'
-                                cardHeight='250px'
-                                carWidth='450px'
-                                titleSize='30px'
-                                engineFontSize='16px'
-                                valueCarDisplay='none'
+                                onClick={() => handleClick(car.Modelo)}
+                                bigCard
+                                bigDescription
+                                bigImage
+                                bigTitle
                                 flex
                                 large
+                                wideCard
                             />
                         ))}
                     </ContentCards>
                 )}
 
-                <StyledLink to='modelos'>
+                <StyledLink to='modelos' onClick={scrollToTop}>
                     <Button>
                         TODOS MODELOS
                     </Button>

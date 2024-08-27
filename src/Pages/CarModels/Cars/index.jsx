@@ -6,6 +6,8 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { FilterContext } from '../FilterContext'
 import { CarNotFind } from './NotFind'
+import { SearchContext } from '@/SearchContext'
+import { SelectedModelContext } from '@/SelectedModelContext'
 
 const Container = styled.section`
     display: flex;
@@ -94,11 +96,16 @@ export const Cars = ({ onCategoryChange }) => {
         return acc
     }, {})
 
+    const { searchValue } = useContext(SearchContext)
+    const { selectedModel } = useContext(SelectedModelContext)
+
     const filteredModelsByCategory = Object.keys(modelsByCategory).reduce((acc, category) => {
         const models = modelsByCategory[category].filter(car => {
             const bodyworkMatch = filters.bodywork.length === 0 || filters.bodywork.includes(car.FiltroCarroçaria)
             const fuelTypeMatch = filters.fueltype.length === 0 || filters.fueltype.includes(car.FiltroCombustível)
-            return bodyworkMatch && fuelTypeMatch
+            const searchTermMatch = searchValue === '' || car.Modelo.toLowerCase().includes(searchValue.toLowerCase())
+            const selectedModelMatch = selectedModel === '' || car.Modelo.toLowerCase().includes(selectedModel.toLowerCase())
+            return bodyworkMatch && fuelTypeMatch && searchTermMatch && selectedModelMatch
         })
 
         if (models.length > 0) {
@@ -143,7 +150,8 @@ export const Cars = ({ onCategoryChange }) => {
                                         title={car.Modelo}
                                         engineType={car.FiltroCombustível}
                                         valueCar={currencyFormat(car.Preço)}
-                                        cardCursor='pointer'
+                                        showValue
+                                        pointer
                                     />
                                 ))}
                             </Content>
