@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import styled from 'styled-components'
 import logo from '/public/Icone BMW.svg'
-import bgImage from '/public/BMWLogoBackground.png'
+import bgImage from '/BMWLogoBackground.png'
 import { Link } from 'react-router-dom'
 import { Paragraph } from '@/Paragraph'
 
