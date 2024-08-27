@@ -53,3 +53,10 @@ Projeto em React.js que exibe modelos da BMW com filtragem dinâmica, roteamento
 <h2>O projeto possui várias interações, fique a vontade em explora-las</h2>
 
 <p>Explore as funcionalidades do projeto clicando nos cards de veículos, utilizando os filtros dinâmicos e observando as animações fluidas dos SVGs entre outras interações.</p>
+
+## Design feito por mim 
+
+### https://www.figma.com/design/3EKgLfAXxd5Yg9dDLbsWEZ/BMW?node-id=0-1&t=q7RIgYm2rszY83IU-1
+
+![Demonstração do Projeto](https://github.com/user-attachments/assets/176dc8d4-1a4a-44b9-bc52-98b783d5263b)
+
