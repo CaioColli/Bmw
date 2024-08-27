@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import styled from 'styled-components'
 import logo from '/public/Icone BMW.svg'
-import bgImage from '/BMWLogoBackground.png'
+import bgImage from '/public/BMWLogoBackground.png'
 import { Link } from 'react-router-dom'
 import { Paragraph } from '@/Paragraph'
 
@@ -46,15 +46,12 @@ const LogoContainer = styled.div`
     gap: 8px;
 `
 
-const IconLogo = styled.div`
+const IconLogo = styled.img`
     width: 40px;
     height: 40px;
-    background-image: url(${logo});
-    background-repeat: no-repeat;
-    background-size: cover;
 `
 
-export const SideMenu = forwardRef(({onClick}, ref) => {
+export const SideMenu = forwardRef(({ onClick }, ref) => {
     return (
         <Container ref={ref}>
             <Contain>
@@ -78,7 +75,7 @@ export const SideMenu = forwardRef(({onClick}, ref) => {
                     </StyledLink>
 
                     <LogoContainer>
-                        <IconLogo />
+                        <IconLogo src={logo} />
                         <Paragraph text='Puro Prazer de Dirigir' />
                     </LogoContainer>
                 </NavList>
