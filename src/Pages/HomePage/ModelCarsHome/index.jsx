@@ -51,7 +51,7 @@ const Button = styled.button`
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
-    cursor: pointer;
+    
 `
 
 export const Cars = () => {

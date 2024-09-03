@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Card = styled.div.withConfig({
     // Utilizar shouldForwardProp para evitar que a prop cardWidth seja passada para o DOM
-    shouldForwardProp: (prop) => !['wideCard', 'bigCard', 'pointer'].includes(prop),
+    shouldForwardProp: (prop) => !['wideCard', 'bigCard'].includes(prop),
 })`
     align-items: end;
     border-radius: 20px;
@@ -15,7 +15,6 @@ const Card = styled.div.withConfig({
     overflow: visible;
     position: relative;
     width: ${props => props.wideCard ? '530px' : '250px'};
-    cursor: ${props => props.pointer ? 'pointer' : 'default'};
     transition: 0.2s ease-in;
 
     &:hover {
@@ -91,9 +90,9 @@ const ValueCar = styled.span.withConfig({
     font-weight: 500;
 `
 
-export const CardCar = ({ wideCard, bigImage, bigCard, pointer, carImage, bigTitle, title, bigDescription, engineType, icon, showValue, valueCar, onClick, flex, large }) => {
+export const CardCar = ({ wideCard, bigImage, bigCard, carImage, bigTitle, title, bigDescription, engineType, icon, showValue, valueCar, onClick, flex, large }) => {
     return (
-        <Card wideCard={wideCard} bigCard={bigCard} pointer={pointer} >
+        <Card wideCard={wideCard} bigCard={bigCard} >
             <CarImage bigImage={bigImage} src={carImage} />
             <Container>
 

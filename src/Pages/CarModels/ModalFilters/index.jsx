@@ -40,7 +40,7 @@ const DeleteFilterContent = styled.button`
     display: flex;
     gap: 8px;
     margin-top: 80px;
-    cursor: pointer;
+    
     transition: 0.2s ease-in;
 
     &:hover {

@@ -61,13 +61,13 @@ const Footer = styled.footer`
 
 const IconNext = styled(SlArrowRightCircle)`
     color: var(--gray);
-    cursor: pointer;
+    
     font-size: 24px;
 `
 
 const IconPrev = styled(SlArrowLeftCircle)`
     color: var(--gray);
-    cursor: pointer;
+    
     font-size: 24px;
 `
 

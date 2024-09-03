@@ -34,7 +34,7 @@ const Input = styled.input`
     all: unset;
     width: 18px;
     height: 18px;
-    cursor: pointer;
+    
     border: 1px solid var(--lightGray);
     position: relative;
 

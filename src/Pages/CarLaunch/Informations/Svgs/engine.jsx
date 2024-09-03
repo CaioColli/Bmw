@@ -5,7 +5,7 @@ import { Button } from './Button'
 
 const Container = styled.div`
     position: relative;
-    cursor: pointer;
+    
 `
 
 const Engine = styled.svg`

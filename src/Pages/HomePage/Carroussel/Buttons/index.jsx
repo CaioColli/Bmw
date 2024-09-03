@@ -8,7 +8,7 @@ export const LeftArrow = styled.button`
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    cursor: pointer;
+    
     height: 48px;
     left: 48px;
     position: absolute;
@@ -22,7 +22,7 @@ export const RightArrow = styled.button`
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    cursor: pointer;
+    
     height: 48px;
     position: absolute;
     right: 48px;

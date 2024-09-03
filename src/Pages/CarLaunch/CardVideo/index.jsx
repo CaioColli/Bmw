@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 const Video = styled.video`
-    cursor: pointer;
+    
     height: 100%;
     left: 0;
     object-fit: cover;

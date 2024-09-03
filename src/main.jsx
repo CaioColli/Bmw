@@ -9,6 +9,7 @@ import { ModalProvider } from './Modal/ModalContext'
 import { CarLaunch } from './Pages/CarLaunch'
 import { SearchProvider } from './SearchContext'
 import { SelectedModelProvider } from './SelectedModelContext'
+import { PageNotFound } from './PageNotFound'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,8 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route index element={<HomePage />} />
                 <Route path='modelos' element={<AllCarsModels />} />
                 <Route path='lançamento' element={<CarLaunch />} />
-                <Route path='*' element={<div> Nada </div>} />
               </Route>
+                <Route path='*' element={<PageNotFound />} />
             </Routes>
           </SelectedModelProvider>
         </SearchProvider>

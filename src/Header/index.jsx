@@ -40,7 +40,7 @@ const Content = styled.div`
 
 const BurguerIcon = styled(FiAlignLeft)`
     color: var(--gray);
-    cursor: pointer;
+    //
     display: none;
     font-size: 24px;
 
@@ -51,7 +51,7 @@ const BurguerIcon = styled(FiAlignLeft)`
 
 const CloseSideIcon = styled(IoIosCloseCircleOutline)`
     color: var(--gray);
-    cursor: pointer;
+    //
     display: none;
     font-size: 24px;
 
@@ -67,7 +67,7 @@ const IconAndNavContainer = styled.div`
 `
 
 const PageIcon = styled.img`
-    cursor: pointer;
+    //
 `
 
 const NavList = styled.ul`
@@ -86,7 +86,7 @@ const StyledLink = styled(Link)`
 
 const NavItem = styled.li`
     all: unset;
-    cursor: pointer;
+    
     color: var(--gray);
     transition: color 0.5s;
 
@@ -96,11 +96,11 @@ const NavItem = styled.li`
 `
 
 const NavLink = styled.a`
-    cursor: pointer;
+    
 `
 
 const SearchIcon = styled(IoSearchOutline)`
-    cursor: pointer;
+    
     font-size: 18px;
     color: var(--gray);
     transition: color 0.5s;

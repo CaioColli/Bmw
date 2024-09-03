@@ -27,7 +27,7 @@ const CarDetail = styled.details`
 
 const Summary = styled.summary`
     align-items: center;
-    cursor: pointer;
+    
     display: flex;
     font-size: 32px;
     font-weight: 400;
@@ -151,7 +151,6 @@ export const Cars = ({ onCategoryChange }) => {
                                         engineType={car.FiltroCombustível}
                                         valueCar={currencyFormat(car.Preço)}
                                         showValue
-                                        pointer
                                     />
                                 ))}
                             </Content>

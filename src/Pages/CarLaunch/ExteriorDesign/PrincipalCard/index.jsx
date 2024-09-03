@@ -9,7 +9,7 @@ import { CardContainer, Card, TextContainer } from '../../PrincipalCard'
 
 export const IconPlay = styled(CiPlay1)`
     color: var(--white);
-    cursor: pointer;
+    
     font-size: 96px;
     left: 50%;
     position: absolute;

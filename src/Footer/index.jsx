@@ -26,8 +26,11 @@ const ContainIcon = styled.div`
     width: 100%;
 `
 
+const StylizedLink = styled(Link)`
+    all: unset;
+`
+
 const PageIcon = styled.img`
-    cursor: pointer;
     padding-bottom: 20px;
 `
 
@@ -59,7 +62,6 @@ const ContainAnchors = styled.div`
 
 const Anchor = styled.a`
     all: unset;
-    cursor: pointer;
 `
 const AnchorIcon = styled.span`
     font-size: 18px;
@@ -75,9 +77,9 @@ export const Footer = () => {
     return (
         <Container>
             <ContainIcon>
-                <Link to='/' onClick={scrollToTop}>
+                <StylizedLink to='/' onClick={scrollToTop}>
                     <PageIcon src={logo} alt="Logo Bmw" />
-                </Link>
+                </StylizedLink>
             </ContainIcon>
 
             <ContainParagraphs>

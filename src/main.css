@@ -5,7 +5,28 @@
     box-sizing: border-box;
 }
 
-a, p, li, span {
+body {
+    cursor: url('/Images/DefaultMouse.svg'), default;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border-radius: 50px;
+
+}
+
+a,
+p,
+li,
+span {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -17,5 +38,5 @@ a, p, li, span {
     --grayBorder: #C0C0C0;
     --grayBg: #262626;
     --fontLato: 'Lato'
-    --fontOpen: 'OpenSans'
+        --fontOpen: 'OpenSans'
 }

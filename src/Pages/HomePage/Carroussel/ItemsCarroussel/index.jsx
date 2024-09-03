@@ -64,7 +64,7 @@ const SubSubTitle = styled.h3`
 
 const Link = styled(FaExternalLinkAlt)`
     color: var(--white);
-    cursor: pointer;
+    
     font-size: 40px;
 
     transition: transform 0.5s;

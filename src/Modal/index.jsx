@@ -31,7 +31,7 @@ const Header = styled.header`
 `
 
 const IconClose = styled(IoIosCloseCircleOutline)`
-    cursor: pointer;
+    
     font-size: 32px;
     color: var(--white);
 `

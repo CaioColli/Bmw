@@ -18,7 +18,7 @@ const Item = styled.li`
 
 const Button = styled.button`
     all: unset;
-    cursor: pointer;
+    
     color: var(--gray);
     font-size: 18px;
     font-weight: bold;
