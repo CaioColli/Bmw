@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { CardCar } from '@/CardCars'
 import { useFetch } from '@/Hooks/useFetchCars'
 import { SubTitle } from '@/SubTitle'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { SelectedModelContext } from '@/SelectedModelContext'
 
 const Container = styled.section`
     align-items: center;
@@ -31,10 +34,19 @@ const Contain = styled.div`
 
 export const OtherModels = () => {
     const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
+    const { setSelectedModel } = useContext(SelectedModelContext)
+
+    const navigate = useNavigate()
 
     const models = ['23', '34']
 
     const selectedModels = data.filter(car => models.includes(car.ID_Carro))
+
+    const handleClick = (carModel) => {
+        setSelectedModel(carModel)
+        navigate('/modelos')
+        window.scrollTo(0, 0)
+    }
 
     return (
         <Container>
@@ -47,6 +59,7 @@ export const OtherModels = () => {
                         carImage={car.FotoFrontal}
                         title={car.Modelo}
                         engineType={car.FiltroCombustível}
+                        onClick={() => handleClick(car.Modelo)}
                         flex
                         large
                         wideCard

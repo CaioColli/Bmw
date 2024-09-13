@@ -58,13 +58,7 @@ export const Cars = () => {
     const { data } = useFetch('https://raw.githubusercontent.com/CaioColli/BmwJson/main/BmwDB.db.json')
     const container = useRef(null)
     const navigate = useNavigate()
-
-    useEffect(() => {
-        if (container.current) {
-            
-        }
-    }, [data])
-
+    
     const cars = ['10', '25', '26', '3', '28', '29']
     const selectedCars = data.filter(car => cars.includes(car.ID_Carro))
 
