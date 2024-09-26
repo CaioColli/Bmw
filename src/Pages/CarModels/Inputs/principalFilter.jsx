@@ -41,7 +41,7 @@ const Button = styled.button`
     align-items: center;
     border: 1px solid var(--gray);
     color: var(--gray);
-    
+    cursor: pointer;
     display: flex;
     font-family: 'Lato';
     font-size: 18px;
