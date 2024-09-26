@@ -33,14 +33,15 @@ const Filters = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    cursor: pointer;
 `
 
 const DeleteFilterContent = styled.button`
     all: unset;
+    cursor: pointer;
     display: flex;
     gap: 8px;
     margin-top: 80px;
-    
     transition: 0.2s ease-in;
 
     &:hover {

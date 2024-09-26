@@ -5,10 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    cursor: url('/Images/DefaultMouse.svg'), default;
-}
-
 body::-webkit-scrollbar {
     width: 6px;
 }
@@ -38,5 +34,5 @@ span {
     --grayBorder: #C0C0C0;
     --grayBg: #262626;
     --fontLato: 'Lato'
-        --fontOpen: 'OpenSans'
+    --fontOpen: 'OpenSans'
 }

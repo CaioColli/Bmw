@@ -16,6 +16,7 @@ const Container = styled.section`
 `
 
 const CarDetail = styled.details`
+    cursor: pointer;
     pointer-events: none;
     scroll-margin-top: 96px;
 

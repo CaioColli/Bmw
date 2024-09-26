@@ -24,7 +24,7 @@ const Label = styled.label`
 
 const Input = styled.input`
     all: unset;
-    
+    cursor: pointer;
     height: 100%;
     position: absolute;
     width: 100%;

@@ -28,6 +28,7 @@ const ContainIcon = styled.div`
 
 const StylizedLink = styled(Link)`
     all: unset;
+    cursor: pointer;
 `
 
 const PageIcon = styled.img`
@@ -62,6 +63,7 @@ const ContainAnchors = styled.div`
 
 const Anchor = styled.a`
     all: unset;
+    cursor: pointer;
 `
 const AnchorIcon = styled.span`
     font-size: 18px;

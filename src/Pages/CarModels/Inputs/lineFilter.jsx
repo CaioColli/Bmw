@@ -14,11 +14,11 @@ const List = styled.ul`
 
 const Item = styled.li`
     all: unset;
+    cursor: pointer;
 `
 
 const Button = styled.button`
     all: unset;
-    
     color: var(--gray);
     font-size: 18px;
     font-weight: bold;

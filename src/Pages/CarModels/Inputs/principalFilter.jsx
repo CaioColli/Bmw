@@ -62,7 +62,7 @@ const Button = styled.button`
 
 const Input = styled.input`
     all: unset;
-    
+    cursor: pointer;
     height: 100%;
     position: absolute;
     top: 0;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const LinkLogo = styled(FaExternalLinkAlt)`
     color: var(--white);
-    
+    cursor: pointer;
     font-size: 30px;
     position: absolute;
     right: 5%;

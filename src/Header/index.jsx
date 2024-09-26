@@ -82,11 +82,12 @@ const NavList = styled.ul`
 
 const StyledLink = styled(Link)`
     all: unset;
+    cursor: pointer;
 `
 
 const NavItem = styled.li`
     all: unset;
-    
+    cursor: pointer;
     color: var(--gray);
     transition: color 0.5s;
 
@@ -100,7 +101,7 @@ const NavLink = styled.a`
 `
 
 const SearchIcon = styled(IoSearchOutline)`
-    
+    cursor: pointer;
     font-size: 18px;
     color: var(--gray);
     transition: color 0.5s;

@@ -8,7 +8,7 @@ const Btn = styled.button.withConfig({
     background-color: ${props => props.whitebg ? '#ffffff' : '#000000'};
     border-radius: 15px;
     color: ${props => props.blackcolor ? '#000000' : '#ffffff'};
-    //
+    cursor: pointer;
     display: ${props => props.flex ? 'flex' : 'none'};
     font-weight: bold;
     justify-content: center;

@@ -7,7 +7,7 @@ const Container = styled.button`
     background-color: var(--grayBorder);
     border-radius: 25%;
     bottom: 48px;
-    //
+    cursor: pointer;
     padding: 8px;
     position: fixed;
     right: 48px;
